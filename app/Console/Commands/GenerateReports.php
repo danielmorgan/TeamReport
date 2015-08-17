@@ -54,8 +54,10 @@ class GenerateReports extends Command
         }
 
         $this->comment('Generating Report:');
-        if (Storage::put('report.json', $this->generateReportJSON())) {
-            $this->comment("\n\rreport.json saved successfully!");
+        $report = $this->generateReportJSON();
+        if (Storage::put('report-' . time() . '.json', $report)) {
+            Storage::put('report-latest.json', $report);
+            $this->comment("\n\rReport saved successfully!");
         }
     }
 
@@ -155,6 +157,19 @@ class GenerateReports extends Command
     protected function getTasklistTime($taskList)
     {
         strtok($taskList, '(');
-        return strtok(')');
+        $time = strtok(')');
+
+        return $this->formatTime($time);
+    }
+
+    /**
+     * Read the time budget and convert it into a single format.
+     *
+     * @todo implement
+     * @param string $time
+     */
+    protected function formatTime($time)
+    {
+        return $time;
     }
 }
