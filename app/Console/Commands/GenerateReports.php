@@ -23,6 +23,13 @@ class GenerateReports extends Command
     protected $description = 'Command description.';
 
     /**
+     * Projects, task lists and times.
+     *
+     * @var array
+     */
+    protected $reportArray = [];
+
+    /**
      * Create a new command instance.
      *
      * @return void
@@ -51,8 +58,31 @@ class GenerateReports extends Command
 
             $taskLists = Teamwork::project((int) $project['id'])->tasklists()['tasklists'];
             foreach ($taskLists as $taskList) {
+                $time = $this->getTimeFromTaskList($taskList['name']);
+                if ($time) {
+                    $this->reportArray[$project['name']][$taskList['name']] = $time;
+                }
+
                 Storage::append($filename, $taskList['name']);
             }
         }
+
+        $this->info(print_r($this->reportArray));
+    }
+
+    /**
+     * Seperate the time from the task list name.
+     *
+     * @return int|false
+     */
+    protected function getTimeFromTaskList($taskListName)
+    {
+        preg_match_all('/\(([0-9 ]+?)\)/', $taskListName, $out);
+
+        if (isset($out[0][0])) {
+            return $out[0][0];
+        }
+
+        return false;
     }
 }
