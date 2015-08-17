@@ -25,11 +25,11 @@ class GenerateReports extends Command
     protected $description = 'Generate reports based on tasklist titles fetched from TeamworkPM.';
 
     /**
-     * Projects, task lists and times.
+     * Name of folder the project tasklists will be stored in, within storage/app/.
      *
-     * @var array
+     * @var string
      */
-    protected $reportArray = [];
+    protected $tasklistCacheDirectory = 'tasklist-cache';
 
     /**
      * Create a new command instance.
@@ -49,15 +49,18 @@ class GenerateReports extends Command
     public function handle()
     {
         if (! $this->option('use-cached')) {
-            $this->info('');
+            $this->comment('Downloading projects from Teamwork:');
             $this->cacheTasklists();
         }
 
-        $this->generateReportJSON();
+        $this->comment('Generating Report:');
+        if (Storage::put('report.json', $this->generateReportJSON())) {
+            $this->comment("\n\rreport.json saved successfully!");
+        }
     }
 
     /**
-     * Fetch tasklists from TeamworkPM and write to local files.
+     * Fetch tasklists from TeamworkPM API and write to local files.
      */
     protected function cacheTasklists()
     {
@@ -66,15 +69,14 @@ class GenerateReports extends Command
         $this->output->progressStart(count($projects));
 
         foreach ($projects as $project) {
-            $directory = 'tasklist-cache/';
-            $filename = $directory . $project['name'];
+            $id = (int) $project['id'];
+            $tasklists = Teamwork::project($id)->tasklists()['tasklists'];
+            $filename = $this->tasklistCacheDirectory . '/' . $project['name'];
 
-            Storage::makeDirectory($directory);
+            Storage::makeDirectory($this->tasklistCacheDirectory);
             if (Storage::exists($filename)) {
                 Storage::delete($filename);
             }
-
-            $tasklists = Teamwork::project((int) $project['id'])->tasklists()['tasklists'];
 
             foreach ($tasklists as $tasklist) {
                 Storage::append($filename, $tasklist['name']);
@@ -87,10 +89,62 @@ class GenerateReports extends Command
     }
 
     /**
-     * Generate JSON from local tasklist cache suitable.
+     * Returns JSON encoded report data.
      */
     protected function generateReportJSON()
     {
+        $parsedTasklists = $this->parseTasklistTitles();
+        return json_encode($parsedTasklists, JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
+     * Generate JSON from local tasklist cache suitable.
+     *
+     * @return array $report
+     */
+    protected function parseTasklistTitles()
+    {
+        $projectFiles = Storage::allFiles($this->tasklistCacheDirectory);
+
+        foreach ($projectFiles as $projectFilename) {
+            $projectName = explode('/', $projectFilename)[1];
+            $tasklists = Storage::get($projectFilename);
+            $tasklists = str_replace("\r", '', $tasklists);
+            $tasklists = explode("\n", $tasklists);
+            $report[$projectName] = [];
+
+            $table = [];
+            $this->info("\n\r" . $projectName);
+
+            foreach ($tasklists as $tasklist) {
+                $name = $this->getTasklistName($tasklist);
+                $time = $this->getTasklistTime($tasklist);
+
+                if ($name && $time) {
+                    $report[$projectName][$name] = $time;
+
+                    $table[] = ['name' => $name, 'time' => $time];
+                }
+            }
+
+            $this->table(['Tasklist', 'Time'], $table);
+        }
+
+        return $report;
+    }
+
+    /**
+     * Seperate the name from the task list name.
+     *
+     * @return string $name
+     */
+    protected function getTasklistName($taskList)
+    {
+        $parenthesisPosition = strpos($taskList, '(');
+        $name = substr($taskList, 0, $parenthesisPosition);
+        $name = trim($name);
+
+        return $name;
     }
 
     /**
@@ -100,14 +154,7 @@ class GenerateReports extends Command
      */
     protected function getTasklistTime($taskList)
     {
-    }
-
-    /**
-     * Seperate the name from the task list name.
-     *
-     * @return string
-     */
-    protected function getTasklistName($taskList)
-    {
+        strtok($taskList, '(');
+        return strtok(')');
     }
 }
