@@ -37,9 +37,10 @@ class GenerateReports extends Command
      */
     public function handle()
     {
-        $taskLists = \Teamwork::project(157226)->tasklists()['tasklists'];
-        foreach ($taskLists as $taskList) {
-            $this->info($taskList['name']);
+        foreach (\Teamwork::project()->all()['projects'] as $project) {
+            foreach (\Teamwork::project((int) $project['id'])->tasklists()['tasklists'] as $taskList) {
+                $this->info($taskList['name']);
+            }
         }
     }
 }
