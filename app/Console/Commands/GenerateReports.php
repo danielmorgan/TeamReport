@@ -13,14 +13,16 @@ class GenerateReports extends Command
      *
      * @var string
      */
-    protected $signature = 'reports:generate';
+    protected $signature = 'reports:generate
+        {--use-cached}
+    ';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description.';
+    protected $description = 'Generate reports based on tasklist titles fetched from TeamworkPM.';
 
     /**
      * Projects, task lists and times.
@@ -46,28 +48,49 @@ class GenerateReports extends Command
      */
     public function handle()
     {
+        if (! $this->option('use-cached')) {
+            $this->info('');
+            $this->cacheTasklists();
+        }
+
+        $this->generateReportJSON();
+    }
+
+    /**
+     * Fetch tasklists from TeamworkPM and write to local files.
+     */
+    protected function cacheTasklists()
+    {
         $projects = Teamwork::project()->all()['projects'];
+
+        $this->output->progressStart(count($projects));
+
         foreach ($projects as $project) {
-            $directory = 'project-tasklists/';
-            $filename = $directory . $project['name'] . '.log';
+            $directory = 'tasklist-cache/';
+            $filename = $directory . $project['name'];
 
             Storage::makeDirectory($directory);
             if (Storage::exists($filename)) {
                 Storage::delete($filename);
             }
 
-            $taskLists = Teamwork::project((int) $project['id'])->tasklists()['tasklists'];
-            foreach ($taskLists as $taskList) {
-                $time = $this->getTimeFromTaskList($taskList['name']);
-                if ($time) {
-                    $this->reportArray[$project['name']][$taskList['name']] = $time;
-                }
+            $tasklists = Teamwork::project((int) $project['id'])->tasklists()['tasklists'];
 
-                Storage::append($filename, $taskList['name']);
+            foreach ($tasklists as $tasklist) {
+                Storage::append($filename, $tasklist['name']);
             }
+
+            $this->output->progressAdvance();
         }
 
-        $this->info(print_r($this->reportArray));
+        $this->output->progressFinish();
+    }
+
+    /**
+     * Generate JSON from local tasklist cache suitable.
+     */
+    protected function generateReportJSON()
+    {
     }
 
     /**
@@ -75,14 +98,16 @@ class GenerateReports extends Command
      *
      * @return int|false
      */
-    protected function getTimeFromTaskList($taskListName)
+    protected function getTasklistTime($taskList)
     {
-        preg_match_all('/\(([0-9 ]+?)\)/', $taskListName, $out);
+    }
 
-        if (isset($out[0][0])) {
-            return $out[0][0];
-        }
-
-        return false;
+    /**
+     * Seperate the name from the task list name.
+     *
+     * @return string
+     */
+    protected function getTasklistName($taskList)
+    {
     }
 }
