@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomString'),
+    'key' => env('APP_KEY', 'Et1Wwua17cD2c4B62UWK2oFLxKlH2QB4'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -138,11 +138,16 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * 3rd Party Service Providers...
+         */
+        Rossedman\Teamwork\TeamworkServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        TeamReport\Providers\AppServiceProvider::class,
+        TeamReport\Providers\EventServiceProvider::class,
+        TeamReport\Providers\RouteServiceProvider::class,
 
     ],
 
@@ -191,6 +196,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        'Teamwork' => Rossedman\Teamwork\Facades\Teamwork::class,
 
     ],
 

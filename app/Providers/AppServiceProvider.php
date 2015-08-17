@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace TeamReport\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

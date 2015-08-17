@@ -30,9 +30,14 @@ return [
     ],
 
     'stripe' => [
-        'model'  => App\User::class,
+        'model'  => TeamReport\User::class,
         'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'teamwork' => [
+        'key'    => env('TEAMWORK_KEY'),
+        'url'    => env('TEAMWORK_URL'),
     ],
 
 ];
