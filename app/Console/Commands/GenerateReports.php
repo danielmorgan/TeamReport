@@ -3,6 +3,8 @@
 namespace TeamReport\Console\Commands;
 
 use Illuminate\Console\Command;
+use Teamwork;
+use Storage;
 
 class GenerateReports extends Command
 {
@@ -37,9 +39,19 @@ class GenerateReports extends Command
      */
     public function handle()
     {
-        foreach (\Teamwork::project()->all()['projects'] as $project) {
-            foreach (\Teamwork::project((int) $project['id'])->tasklists()['tasklists'] as $taskList) {
-                $this->info($taskList['name']);
+        $projects = Teamwork::project()->all()['projects'];
+        foreach ($projects as $project) {
+            $directory = 'project-tasklists/';
+            $filename = $directory . $project['name'] . '.log';
+
+            Storage::makeDirectory($directory);
+            if (Storage::exists($filename)) {
+                Storage::delete($filename);
+            }
+
+            $taskLists = Teamwork::project((int) $project['id'])->tasklists()['tasklists'];
+            foreach ($taskLists as $taskList) {
+                Storage::append($filename, $taskList['name']);
             }
         }
     }
