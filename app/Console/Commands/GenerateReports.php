@@ -106,6 +106,11 @@ class GenerateReports extends Command
      */
     protected function parseTasklistTitles()
     {
+        $totalTasklistsCount = 0;
+        $totalProjectCount = 0;
+        $tasklistsCount = 0;
+        $projectCount = 0;
+
         $projectFiles = Storage::allFiles($this->tasklistCacheDirectory);
 
         foreach ($projectFiles as $projectFilename) {
@@ -125,40 +130,48 @@ class GenerateReports extends Command
                     $report[$projectName][$name] = $time;
 
                     $table[] = ['name' => $name, 'time' => $time];
+                    $tasklistsCount++;
                 }
+                $totalTasklistsCount++;
             }
 
             if (! empty($table)) {
                 $this->info("\n\r" . $projectName);
                 $this->table(['Tasklist', 'Time'], $table);
+
+                $projectCount++;
             }
+            $totalProjectCount++;
         }
+
+        $this->info("\n\rFound:         " . $totalProjectCount . ' projects containing ' . $totalTasklistsCount . ' tasklists.');
+        $this->info("With times:    " . $projectCount . ' projects containing ' . $tasklistsCount . ' tasklists.');
 
         return $report;
     }
 
     /**
-     * Seperate the name from the task list name.
+     * Seperate the name from the tasklist.
      *
      * @return string $name
      */
-    protected function getTasklistName($taskList)
+    protected function getTasklistName($tasklist)
     {
-        $parenthesisPosition = strpos($taskList, '(');
-        $name = substr($taskList, 0, $parenthesisPosition);
+        $parenthesisPosition = strpos($tasklist, '(');
+        $name = substr($tasklist, 0, $parenthesisPosition);
         $name = trim($name);
 
         return $name;
     }
 
     /**
-     * Seperate the time from the task list name.
+     * Seperate the time from the tasklist.
      *
      * @return int|false
      */
-    protected function getTasklistTime($taskList)
+    protected function getTasklistTime($tasklist)
     {
-        strtok($taskList, '(');
+        strtok($tasklist, '(');
         $time = strtok(')');
 
         return $this->formatTime($time);
@@ -167,7 +180,6 @@ class GenerateReports extends Command
     /**
      * Read the time budget and convert it into a single format.
      *
-     * @todo implement
      * @param float $time
      */
     protected function formatTime($time)
