@@ -116,7 +116,6 @@ class GenerateReports extends Command
             $report[$projectName] = [];
 
             $table = [];
-            $this->info("\n\r" . $projectName);
 
             foreach ($tasklists as $tasklist) {
                 $name = $this->getTasklistName($tasklist);
@@ -129,7 +128,10 @@ class GenerateReports extends Command
                 }
             }
 
-            $this->table(['Tasklist', 'Time'], $table);
+            if (! empty($table)) {
+                $this->info("\n\r" . $projectName);
+                $this->table(['Tasklist', 'Time'], $table);
+            }
         }
 
         return $report;
@@ -166,10 +168,14 @@ class GenerateReports extends Command
      * Read the time budget and convert it into a single format.
      *
      * @todo implement
-     * @param string $time
+     * @param float $time
      */
     protected function formatTime($time)
     {
-        return $time;
+        $time = strtolower($time);
+        $time = preg_replace('/(hours|hour|hrs|hr|h)/', '', $time);
+        $time = trim($time);
+
+        return (float) $time;
     }
 }
