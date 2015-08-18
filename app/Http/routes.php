@@ -1,5 +1,9 @@
 <?php
 
 Route::get('/', function () {
-    // Artisan::call('reports:generate', ['--use-cached' => true]);
+    return view('projects');
+});
+
+Route::get('generate', function() {
+    Artisan::callSilent('reports:generate');
 });
