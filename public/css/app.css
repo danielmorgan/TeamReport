@@ -5991,4 +5991,13 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.project .times .tasklist {
+  font-weight: bold; }
+
+.project .times .budget {
+  color: #787878; }
+
+.project .times .used {
+  color: #e74c3c; }
+
 /*# sourceMappingURL=app.css.map */

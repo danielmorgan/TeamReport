@@ -6,10 +6,10 @@ elixir(function(mix) {
     BrowserSync.init();
 
     mix.sass('app.scss')
-        .scriptsIn('resources/assets/js')
+        .browserify('app.js')
         .version([
             'css/app.css',
-            'js/all.js'
+            'js/app.js'
         ])
         .BrowserSync({
             proxy: process.env.APP_URL,
