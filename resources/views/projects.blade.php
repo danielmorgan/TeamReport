@@ -2,7 +2,7 @@
 @section('title', 'All Projects')
 
 @section('content')
-<div class="row">
+<!--<div class="row">
     <div>
         <h1>All Projects</h1>
     </div>
@@ -47,5 +47,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
+
+<div id="charts"></div>
 @endsection

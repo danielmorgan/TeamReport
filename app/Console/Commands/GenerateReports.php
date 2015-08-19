@@ -14,8 +14,7 @@ class GenerateReports extends Command
      * @var string
      */
     protected $signature = 'reports:generate
-        {--use-cached}
-    ';
+        {--production}';
 
     /**
      * The console command description.
@@ -23,13 +22,6 @@ class GenerateReports extends Command
      * @var string
      */
     protected $description = 'Generate reports based on tasklist titles fetched from TeamworkPM.';
-
-    /**
-     * Name of folder the project tasklists will be stored in, within storage/app/.
-     *
-     * @var string
-     */
-    protected $tasklistCacheDirectory = 'tasklist-cache';
 
     /**
      * Create a new command instance.
@@ -48,117 +40,42 @@ class GenerateReports extends Command
      */
     public function handle()
     {
-        if (! $this->option('use-cached')) {
-            $this->comment('Downloading projects from Teamwork:');
-            $this->cacheTasklists();
-        }
-
-        $this->comment('Generating Report:');
-        $report = $this->generateReportJSON();
-        if (Storage::put('report-' . time() . '.json', $report)) {
-            Storage::put('report-latest.json', $report);
-            $this->comment("\n\rReport saved successfully!");
-        }
+        $this->comment('Downloading projects from Teamwork:');
+        $this->generateReport();
     }
 
     /**
      * Fetch tasklists from TeamworkPM API and write to local files.
      */
-    protected function cacheTasklists()
+    protected function generateReport()
     {
-        $projects = Teamwork::project()->all()['projects'];
+        $tasklistsArray = [];
 
+        $projects = Teamwork::project()->all()['projects'];
         $this->output->progressStart(count($projects));
 
         foreach ($projects as $project) {
             $id = (int) $project['id'];
+            $tasklistsArray[$project['name']] = [];
+            $tasklistsArray[$project['name']]['id'] = $id;
+            $tasklistsArray[$project['name']]['name'] = $project['name'];
+            $tasklistsArray[$project['name']]['company'] = $project['company']['name'];
+
             $tasklists = Teamwork::project($id)->tasklists()['tasklists'];
-            $filename = $this->tasklistCacheDirectory . '/' . $project['name'];
-
-            Storage::makeDirectory($this->tasklistCacheDirectory);
-            if (Storage::exists($filename)) {
-                Storage::delete($filename);
-            }
-
             foreach ($tasklists as $tasklist) {
-                Storage::append($filename, $tasklist['name']);
+                $name = $this->getTasklistName($tasklist['name']);
+                $tasklistsArray[$project['name']]['tasklists'][$name]['name'] = $name;
+                $tasklistsArray[$project['name']]['tasklists'][$name]['id'] = $this->getTasklistbudget($tasklist['name']);
+                $tasklistsArray[$project['name']]['tasklists'][$name]['budget'] = $this->getTasklistbudget($tasklist['name']);
+                $tasklistsArray[$project['name']]['tasklists'][$name]['used'] = (float) Teamwork::tasklist((int) $tasklist['id'])->timeTotal()['projects'][0]['tasklist']['time-totals']['total-hours-sum'];
             }
 
             $this->output->progressAdvance();
         }
 
+        $this->saveReport($tasklistsArray);
+
         $this->output->progressFinish();
-    }
-
-    /**
-     * Returns JSON encoded report data.
-     */
-    protected function generateReportJSON()
-    {
-        $parsedTasklists = $this->parseTasklistTitles();
-
-        if (env('APP_DEBUG')) {
-            return json_encode($parsedTasklists, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-        } else {
-            return json_encode($parsedTasklists, JSON_UNESCAPED_SLASHES);
-        }
-    }
-
-    /**
-     * Generate JSON from local tasklist cache suitable.
-     *
-     * @return array $report
-     */
-    protected function parseTasklistTitles()
-    {
-        $totalTasklistsCount = 0;
-        $totalProjectCount = 0;
-        $tasklistsCount = 0;
-        $projectCount = 0;
-
-        $projectFiles = Storage::allFiles($this->tasklistCacheDirectory);
-
-        foreach ($projectFiles as $projectFilename) {
-            $projectName = explode('/', $projectFilename)[1];
-            $tasklists = Storage::get($projectFilename);
-            $tasklists = str_replace("\r", '', $tasklists);
-            $tasklists = explode("\n", $tasklists);
-            $report[$projectName] = [];
-
-            $table = [];
-
-            foreach ($tasklists as $tasklist) {
-                $name = $this->getTasklistName($tasklist);
-                $time = $this->getTasklistTime($tasklist);
-
-                if ($name && $time) {
-                    $report[$projectName][] = [
-                        'tasklist' => $name,
-                        'budget' => $time,
-                        'used' => null
-                    ];
-
-                    $table[] = ['name' => $name, 'time' => $time];
-                    $tasklistsCount++;
-                }
-                $totalTasklistsCount++;
-            }
-
-            if (! empty($table)) {
-                if ($this->option('verbose')) {
-                    $this->info("\n\r" . $projectName);
-                    $this->table(['Tasklist', 'Time'], $table);
-                }
-
-                $projectCount++;
-            }
-            $totalProjectCount++;
-        }
-
-        $this->info("\n\rFound:         " . $totalProjectCount . ' projects containing ' . $totalTasklistsCount . ' tasklists.');
-        $this->info("With budgets:  " . $projectCount . ' projects containing ' . $tasklistsCount . ' tasklists.');
-
-        return $report;
     }
 
     /**
@@ -168,37 +85,56 @@ class GenerateReports extends Command
      */
     protected function getTasklistName($tasklist)
     {
-        $parenthesisPosition = strpos($tasklist, '(');
-        $name = substr($tasklist, 0, $parenthesisPosition);
+        $name = $tasklist;
+        $parenthesisPosition = strpos($name, '(');
+        if ($parenthesisPosition) {
+            $name = substr($tasklist, 0, $parenthesisPosition);
+        }
         $name = trim($name);
 
         return $name;
     }
 
     /**
-     * Seperate the time from the tasklist.
+     * Seperate the budget from the tasklist.
      *
      * @return int|false
      */
-    protected function getTasklistTime($tasklist)
+    protected function getTasklistBudget($tasklist)
     {
         strtok($tasklist, '(');
-        $time = strtok(')');
+        $budget = strtok(')');
 
-        return $this->formatTime($time);
+        return $this->formatBudget($budget);
     }
 
     /**
-     * Read the time budget and convert it into a single format.
+     * Read the budget budget and convert it into a single format.
      *
-     * @param float $time
+     * @param float $budget
      */
-    protected function formatTime($time)
+    protected function formatBudget($budget)
     {
-        $time = strtolower($time);
-        $time = preg_replace('/(hours|hour|hrs|hr|h)/', '', $time);
-        $time = trim($time);
+        $budget = strtolower($budget);
+        $budget = preg_replace('/(hours|hour|hrs|hr|h)/', '', $budget);
+        $budget = trim($budget);
 
-        return (float) $time;
+        return (float) $budget;
+    }
+
+    protected function saveReport($report)
+    {
+        $time = time();
+
+        if (Storage::exists('report.json')) {
+            Storage::delete('report.json');
+        }
+        if (! env('APP_DEBUG') || $this->option('production')) {
+            Storage::append('report.json', json_encode($report, JSON_UNESCAPED_SLASHES));
+            Storage::append('report-' . $time . '.json', json_encode($report, JSON_UNESCAPED_SLASHES));
+        } else {
+            Storage::append('report.json', json_encode($report, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+            Storage::append('report-' . $time . '.json', json_encode($report, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        }
     }
 }
