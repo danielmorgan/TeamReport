@@ -18,6 +18,7 @@ elixir(function(mix) {
                 'public/assets/**/*',
                 'resources/langs/**/*',
                 'resources/views/**/*',
-            ]
+            ],
+            reloadDelay: 1000
         });
 });

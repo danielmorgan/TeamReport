@@ -96,7 +96,12 @@ class GenerateReports extends Command
     protected function generateReportJSON()
     {
         $parsedTasklists = $this->parseTasklistTitles();
-        return json_encode($parsedTasklists, JSON_UNESCAPED_SLASHES);
+
+        if (env('APP_DEBUG')) {
+            return json_encode($parsedTasklists, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+        } else {
+            return json_encode($parsedTasklists, JSON_UNESCAPED_SLASHES);
+        }
     }
 
     /**
@@ -127,7 +132,11 @@ class GenerateReports extends Command
                 $time = $this->getTasklistTime($tasklist);
 
                 if ($name && $time) {
-                    $report[$projectName][$name] = $time;
+                    $report[$projectName][] = [
+                        'tasklist' => $name,
+                        'budget' => $time,
+                        'used' => null
+                    ];
 
                     $table[] = ['name' => $name, 'time' => $time];
                     $tasklistsCount++;
@@ -136,8 +145,10 @@ class GenerateReports extends Command
             }
 
             if (! empty($table)) {
-                $this->info("\n\r" . $projectName);
-                $this->table(['Tasklist', 'Time'], $table);
+                if ($this->option('verbose')) {
+                    $this->info("\n\r" . $projectName);
+                    $this->table(['Tasklist', 'Time'], $table);
+                }
 
                 $projectCount++;
             }
@@ -145,7 +156,7 @@ class GenerateReports extends Command
         }
 
         $this->info("\n\rFound:         " . $totalProjectCount . ' projects containing ' . $totalTasklistsCount . ' tasklists.');
-        $this->info("With times:    " . $projectCount . ' projects containing ' . $tasklistsCount . ' tasklists.');
+        $this->info("With budgets:  " . $projectCount . ' projects containing ' . $tasklistsCount . ' tasklists.');
 
         return $report;
     }

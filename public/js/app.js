@@ -3500,7 +3500,7 @@ var Chart = require('chart.js');
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [65.5, 59, 60, 55, 59, 60]
+            data: [45, 60, 60, 50, 50, 60]
         }, {
             label: 'Used time',
             fillColor: 'rgba(231,76,60,0.3)',
@@ -3509,7 +3509,7 @@ var Chart = require('chart.js');
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(231,76,60,1)',
-            data: [28, 48, 40, 39, 0, 26]
+            data: [20, 20, 20, 20, 20, 20]
         }]
     };
 
