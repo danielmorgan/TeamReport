@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>TeamReport - @yield('title')</title>
+        <title>TeamReport</title>
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
     </head>
     <body>
@@ -8,6 +8,6 @@
             @yield('content')
         </div>
 
-        <script type="text/javascript" src="{{ elixir('js/demo.js') }}"></script>
+        <script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
     </body>
 </html>
