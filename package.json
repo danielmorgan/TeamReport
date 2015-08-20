@@ -6,6 +6,7 @@
     "laravel-elixir-browsersync2": "^0.1.0"
   },
   "dependencies": {
+    "backbone": "^1.2.2",
     "bootstrap-sass": "^3.0.0",
     "chart.js": "^1.0.2",
     "laravel-elixir": "^3.0.0"
