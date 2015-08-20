@@ -3555,5 +3555,207 @@ var report = require('../../../storage/app/report.json');
 })();
 
 },{"../../../storage/app/report.json":3,"chart.js":1}],3:[function(require,module,exports){
-module.exports={"Agency Folder":{"id":95275,"name":"Agency Folder","company":"Nublue","tasklists":{"Staff":{"name":"Staff","id":0,"budget":0,"used":7869.95},"Leftover Tasks":{"name":"Leftover Tasks","id":0,"budget":0,"used":16.92},"Sales Opportunities":{"name":"Sales Opportunities","id":0,"budget":0,"used":972.83},"Charity SDP":{"name":"Charity SDP","id":0,"budget":0,"used":16.5},"NuBlue SDP":{"name":"NuBlue SDP","id":0,"budget":0,"used":204.15}}},"DB-ENG-LEA":{"id":132694,"name":"DB-ENG-LEA","company":"Engineering Insights","tasklists":{"Project Management":{"name":"Project Management","id":119,"budget":119,"used":182.08},"Research":{"name":"Research","id":56,"budget":56,"used":16},"Front End Development":{"name":"Front End Development","id":140,"budget":140,"used":0},"Web Design":{"name":"Web Design","id":56,"budget":56,"used":99.5},"Systems Development":{"name":"Systems Development","id":175,"budget":175,"used":435.08},"Testing":{"name":"Testing","id":56,"budget":56,"used":16.75},"Go Live Schedule":{"name":"Go Live Schedule","id":0,"budget":0,"used":0},"Delivery/Training":{"name":"Delivery/Training","id":21,"budget":21,"used":0},"Free Support Period":{"name":"Free Support Period","id":0,"budget":0,"used":0},"Planning":{"name":"Planning","id":49,"budget":49,"used":0},"User Interface Design":{"name":"User Interface Design","id":14,"budget":14,"used":0},"Data / Content Formatting / Importing":{"name":"Data / Content Formatting / Importing","id":14,"budget":14,"used":0}}},"DB-GRO-WEB":{"id":160993,"name":"DB-GRO-WEB","company":"Growing Well","tasklists":{"Project Management":{"name":"Project Management","id":42,"budget":42,"used":14.75},"Research":{"name":"Research","id":0,"budget":0,"used":2},"Planning":{"name":"Planning","id":14,"budget":14,"used":9.75},"User Interface Prototyping":{"name":"User Interface Prototyping","id":3.5,"budget":3.5,"used":0},"Web Design":{"name":"Web Design","id":10.5,"budget":10.5,"used":0},"Data Importing":{"name":"Data Importing","id":10.5,"budget":10.5,"used":0},"Front End Development":{"name":"Front End Development","id":14,"budget":14,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":28,"budget":28,"used":0},"Systems Development":{"name":"Systems Development","id":0,"budget":0,"used":0},"Testing":{"name":"Testing","id":7,"budget":7,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":3.5,"budget":3.5,"used":0}}},"DB-INC-WOR":{"id":143266,"name":"DB-INC-WOR","company":"Inclusion Recruitment","tasklists":{"Project Management":{"name":"Project Management","id":14,"budget":14,"used":23.25},"Research":{"name":"Research","id":3.5,"budget":3.5,"used":1.25},"Web Design":{"name":"Web Design","id":7,"budget":7,"used":6},"Data / Content Formatting / Importing":{"name":"Data / Content Formatting / Importing","id":3.5,"budget":3.5,"used":0},"Front End Development":{"name":"Front End Development","id":22.75,"budget":22.75,"used":29.5},"Testing":{"name":"Testing","id":7,"budget":7,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery/Training":{"name":"Delivery/Training","id":7,"budget":7,"used":0}}},"DB-INT-WEB":{"id":147722,"name":"DB-INT-WEB","company":"Interior Supply","tasklists":{"Project Management":{"name":"Project Management","id":42,"budget":42,"used":76.75},"Planning":{"name":"Planning","id":14,"budget":14,"used":31},"User Interface Design":{"name":"User Interface Design","id":14,"budget":14,"used":6.25},"Web Design":{"name":"Web Design","id":35,"budget":35,"used":58.25},"Data / Content Formatting / Importing":{"name":"Data / Content Formatting / Importing","id":14,"budget":14,"used":45.25},"Front End Development":{"name":"Front End Development","id":42,"budget":42,"used":27},"Systems Development":{"name":"Systems Development","id":14,"budget":14,"used":18.5},"Testing":{"name":"Testing","id":7,"budget":7,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery/Training":{"name":"Delivery/Training","id":7,"budget":7,"used":0}}},"DB-JIL-MAG":{"id":95277,"name":"DB-JIL-MAG","company":"JillyBeads","tasklists":{"Finance":{"name":"Finance","id":0,"budget":0,"used":0},"Systems Development":{"name":"Systems Development","id":105,"budget":105,"used":187.17},"Project Management":{"name":"Project Management","id":0,"budget":0,"used":96.42}}},"DB-LIN-WEB":{"id":149365,"name":"DB-LIN-WEB","company":"Lincrusta","tasklists":{"Project Management":{"name":"Project Management","id":63,"budget":63,"used":27.5},"Planning":{"name":"Planning","id":21,"budget":21,"used":37.5},"User Interface Prototyping":{"name":"User Interface Prototyping","id":21,"budget":21,"used":36.75},"Web Design":{"name":"Web Design","id":70,"budget":70,"used":46},"Data / Content Formatting / Importing":{"name":"Data / Content Formatting / Importing","id":28,"budget":28,"used":0},"Front End Development":{"name":"Front End Development","id":119,"budget":119,"used":0.25},"Systems Development - Magento":{"name":"Systems Development - Magento","id":84,"budget":84,"used":0},"Testing":{"name":"Testing","id":21,"budget":21,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":10.5,"budget":10.5,"used":0},"Research":{"name":"Research","id":14,"budget":14,"used":0}}},"DB-MER-PRM":{"id":95278,"name":"DB-MER-PRM","company":"Meridian Healthcare","tasklists":{"Project Management":{"name":"Project Management","id":70,"budget":70,"used":207.25},"Research":{"name":"Research","id":7,"budget":7,"used":3},"Planning":{"name":"Planning","id":21,"budget":21,"used":17.25},"User Interface Design":{"name":"User Interface Design","id":28,"budget":28,"used":50.25},"Web Design":{"name":"Web Design","id":56,"budget":56,"used":84.5},"Application installation / Configuration":{"name":"Application installation / Configuration","id":7,"budget":7,"used":0},"Data / Content Formatting / Importing":{"name":"Data / Content Formatting / Importing","id":42,"budget":42,"used":32.5},"Front End Development":{"name":"Front End Development","id":112,"budget":112,"used":81.5},"Systems Development":{"name":"Systems Development","id":49,"budget":49,"used":261.5},"Testing":{"name":"Testing","id":21,"budget":21,"used":4.25},"Delivery / Training":{"name":"Delivery / Training","id":21,"budget":21,"used":0}}},"DB-NUT-MSW":{"id":154799,"name":"DB-NUT-MSW","company":"Nutricia Limited (UK)","tasklists":{"Nutricia":{"name":"Nutricia","id":0,"budget":0,"used":0},"Project Management":{"name":"Project Management","id":105,"budget":105,"used":14},"Planning":{"name":"Planning","id":28,"budget":28,"used":21.25},"User Interface Prototyping":{"name":"User Interface Prototyping","id":21,"budget":21,"used":11},"Web Design":{"name":"Web Design","id":56,"budget":56,"used":0},"Data Importing":{"name":"Data Importing","id":28,"budget":28,"used":8.5},"Front End Development":{"name":"Front End Development","id":56,"budget":56,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":35,"budget":35,"used":1.5},"Testing":{"name":"Testing","id":14,"budget":14,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":21,"budget":21,"used":0}}},"DB-PFP-COR":{"id":141915,"name":"DB-PFP-COR","company":"Plastics4Performance","tasklists":{"Project Management":{"name":"Project Management","id":28,"budget":28,"used":44.92},"Planning":{"name":"Planning","id":10.5,"budget":10.5,"used":19.75},"User Interface Design":{"name":"User Interface Design","id":14,"budget":14,"used":31.75},"Web Design":{"name":"Web Design","id":21,"budget":21,"used":21.25},"Data / Content Formatting / Importing":{"name":"Data / Content Formatting / Importing","id":3.5,"budget":3.5,"used":0},"Front End Development":{"name":"Front End Development","id":21,"budget":21,"used":19.75},"Systems Development":{"name":"Systems Development","id":7,"budget":7,"used":0},"Testing":{"name":"Testing","id":3.5,"budget":3.5,"used":0.5},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery/Training":{"name":"Delivery/Training","id":3.5,"budget":3.5,"used":0},"Copywriting":{"name":"Copywriting","id":7,"budget":7,"used":0}}},"DB-THB-THB":{"id":157226,"name":"DB-THB-THB","company":"TH Baker","tasklists":{"Project Management":{"name":"Project Management","id":182,"budget":182,"used":80.5},"Data Importing":{"name":"Data Importing","id":70,"budget":70,"used":35.5},"Front End Development":{"name":"Front End Development","id":101.5,"budget":101.5,"used":115},"Systems Development - Magento":{"name":"Systems Development - Magento","id":238,"budget":238,"used":271.25},"Testing":{"name":"Testing","id":35,"budget":35,"used":24.5},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":3.5,"budget":3.5,"used":0}}},"MP-AVI-WEB":{"id":154049,"name":"MP-AVI-WEB","company":"Aviemore Home","tasklists":{"Project Management":{"name":"Project Management","id":14,"budget":14,"used":14}}},"MP-ENG-VZA":{"id":161459,"name":"MP-ENG-VZA","company":"Engineering Insights","tasklists":{"Project Management":{"name":"Project Management","id":56,"budget":56,"used":14.75},"Research":{"name":"Research","id":0,"budget":0,"used":0},"Planning":{"name":"Planning","id":7,"budget":7,"used":0},"User Interface Prototyping":{"name":"User Interface Prototyping","id":0,"budget":0,"used":0},"Web Design":{"name":"Web Design","id":7,"budget":7,"used":0.25},"Data Importing":{"name":"Data Importing","id":0,"budget":0,"used":0},"Front End Development":{"name":"Front End Development","id":0,"budget":0,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":0,"budget":0,"used":0},"Systems Development":{"name":"Systems Development","id":98,"budget":98,"used":51.75},"Testing":{"name":"Testing","id":10.5,"budget":10.5,"used":1},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":3.5,"budget":3.5,"used":0}}},"MP-EUR-CHA":{"id":160239,"name":"MP-EUR-CHA","company":"Eurofit Systems","tasklists":{"Project Management":{"name":"Project Management","id":10.5,"budget":10.5,"used":4},"Front End Development":{"name":"Front End Development","id":21,"budget":21,"used":15},"Systems Development - Magento":{"name":"Systems Development - Magento","id":3.5,"budget":3.5,"used":6.75},"Delivery & Training":{"name":"Delivery & Training","id":3.5,"budget":3.5,"used":0},"Testing":{"name":"Testing","id":3.5,"budget":3.5,"used":0}}},"MP-GHT-SAP":{"id":161458,"name":"MP-GHT-SAP","company":"MBL Group","tasklists":{"Project Management":{"name":"Project Management","id":5,"budget":5,"used":2.75},"Research":{"name":"Research","id":0,"budget":0,"used":5.25},"Planning":{"name":"Planning","id":0,"budget":0,"used":0},"User Interface Prototyping":{"name":"User Interface Prototyping","id":0,"budget":0,"used":0},"Web Design":{"name":"Web Design","id":0,"budget":0,"used":0},"Data Importing":{"name":"Data Importing","id":0,"budget":0,"used":0},"Front End Development":{"name":"Front End Development","id":0,"budget":0,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":0,"budget":0,"used":0},"Systems Development":{"name":"Systems Development","id":0,"budget":0,"used":0},"Testing":{"name":"Testing","id":0,"budget":0,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":0,"budget":0,"used":0},"Consultancy":{"name":"Consultancy","id":20,"budget":20,"used":0}}},"MP-MER-OPP":{"id":139123,"name":"MP-MER-OPP","company":"Meridian Healthcare","tasklists":{"Project Management":{"name":"Project Management","id":14,"budget":14,"used":2.25},"Web Design":{"name":"Web Design","id":21,"budget":21,"used":0},"Front End Development":{"name":"Front End Development","id":21,"budget":21,"used":0},"Systems Development":{"name":"Systems Development","id":28,"budget":28,"used":0},"Testing":{"name":"Testing","id":7,"budget":7,"used":0},"Go Live Schedule":{"name":"Go Live Schedule","id":0,"budget":0,"used":0},"Free Support Period 7 Days":{"name":"Free Support Period 7 Days","id":0,"budget":0,"used":0}}},"MP-MER-PLA-02":{"id":161460,"name":"MP-MER-PLA-02","company":"Meridian Healthcare","tasklists":{"Project Management":{"name":"Project Management","id":14,"budget":14,"used":9.5},"Web Design":{"name":"Web Design","id":8,"budget":8,"used":3.75},"Front End Development":{"name":"Front End Development","id":14.5,"budget":14.5,"used":4},"Systems Development - Magento":{"name":"Systems Development - Magento","id":0,"budget":0,"used":0},"Systems Development":{"name":"Systems Development","id":9,"budget":9,"used":5.75},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0}}},"MP-NUT-CUR":{"id":158866,"name":"MP-NUT-CUR","company":"Nutricia Limited (UK)","tasklists":{"Project Management":{"name":"Project Management","id":38.5,"budget":38.5,"used":14},"Systems Development - Magento":{"name":"Systems Development - Magento","id":56,"budget":56,"used":18.75},"Testing":{"name":"Testing","id":24.5,"budget":24.5,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":3.5,"budget":3.5,"used":0}}},"MP-NUT-ENF":{"id":163329,"name":"MP-NUT-ENF","company":"Nutricia Medical Ireland Limited","tasklists":{"Project Management":{"name":"Project Management","id":0,"budget":0,"used":0},"Research":{"name":"Research","id":0,"budget":0,"used":0},"Planning":{"name":"Planning","id":0,"budget":0,"used":0},"User Interface Prototyping":{"name":"User Interface Prototyping","id":0,"budget":0,"used":0},"Web Design":{"name":"Web Design","id":0,"budget":0,"used":3},"Data Importing":{"name":"Data Importing","id":0,"budget":0,"used":0},"Front End Development":{"name":"Front End Development","id":0,"budget":0,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":0,"budget":0,"used":0},"Systems Development":{"name":"Systems Development","id":0,"budget":0,"used":0},"Testing":{"name":"Testing","id":0,"budget":0,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":0,"budget":0,"used":0}}},"MP-NUT-MPA":{"id":162441,"name":"MP-NUT-MPA","company":"Nutricia Limited (UK)","tasklists":{"Project Management":{"name":"Project Management","id":56,"budget":56,"used":0.75},"Research":{"name":"Research","id":0,"budget":0,"used":1.5},"Planning":{"name":"Planning","id":7,"budget":7,"used":0},"User Interface Prototyping":{"name":"User Interface Prototyping","id":10.5,"budget":10.5,"used":9.25},"Web Design":{"name":"Web Design","id":14,"budget":14,"used":0},"Data Importing":{"name":"Data Importing","id":7,"budget":7,"used":0},"Front End Development":{"name":"Front End Development","id":28,"budget":28,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":0,"budget":0,"used":0},"Systems Development":{"name":"Systems Development","id":42,"budget":42,"used":0},"Testing":{"name":"Testing","id":7,"budget":7,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":3.5,"budget":3.5,"used":0}}},"MP-NUT-SCN":{"id":150190,"name":"MP-NUT-SCN","company":"Nutricia Limited (UK)","tasklists":{"Project Management":{"name":"Project Management","id":35,"budget":35,"used":52},"Planning":{"name":"Planning","id":21,"budget":21,"used":16.75},"User Interface Prototyping":{"name":"User Interface Prototyping","id":14,"budget":14,"used":0},"Web Design":{"name":"Web Design","id":35,"budget":35,"used":25.42},"Data Importing":{"name":"Data Importing","id":7,"budget":7,"used":0},"Front End Development":{"name":"Front End Development","id":49,"budget":49,"used":68.5},"Systems Development - Magento":{"name":"Systems Development - Magento","id":63,"budget":63,"used":87.25},"Testing":{"name":"Testing","id":21,"budget":21,"used":0.5},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":7,"budget":7,"used":0},"Phase 2":{"name":"Phase 2","id":0,"budget":0,"used":19.5}}},"MP-SOA-CHK ":{"id":160610,"name":"MP-SOA-CHK ","company":"Soak & Sleep Ltd","tasklists":{"Project Management":{"name":"Project Management","id":7,"budget":7,"used":6.75},"Web Design":{"name":"Web Design","id":1.75,"budget":1.75,"used":1.25},"Front End Development":{"name":"Front End Development","id":10.5,"budget":10.5,"used":13.5},"Systems Development":{"name":"Systems Development","id":8.75,"budget":8.75,"used":20.25},"Testing":{"name":"Testing","id":1.75,"budget":1.75,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":1.75,"budget":1.75,"used":0}}},"MP-SOA-RES":{"id":161456,"name":"MP-SOA-RES","company":"Soak & Sleep Ltd","tasklists":{"Project Management":{"name":"Project Management","id":75.25,"budget":75.25,"used":25},"Research":{"name":"Research","id":0,"budget":0,"used":0.5},"Planning":{"name":"Planning","id":0,"budget":0,"used":0},"User Interface Prototyping":{"name":"User Interface Prototyping","id":0,"budget":0,"used":0},"Web Design":{"name":"Web Design","id":38.5,"budget":38.5,"used":48.5},"Data Importing":{"name":"Data Importing","id":0,"budget":0,"used":0},"Front End Development":{"name":"Front End Development","id":88,"budget":88,"used":18.5},"Systems Development - Magento":{"name":"Systems Development - Magento","id":0,"budget":0,"used":0},"Systems Development":{"name":"Systems Development","id":91,"budget":91,"used":0},"Testing":{"name":"Testing","id":15.75,"budget":15.75,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":7,"budget":7,"used":0}}},"MP-TAP-UPG":{"id":145087,"name":"MP-TAP-UPG","company":"TapStore","tasklists":{"Project Management":{"name":"Project Management","id":7,"budget":7,"used":7.75},"Systems Development":{"name":"Systems Development","id":14,"budget":14,"used":24.5},"Testing":{"name":"Testing","id":0,"budget":0,"used":3.75},"Go Live Schedule":{"name":"Go Live Schedule","id":0,"budget":0,"used":0},"Delivery/Training":{"name":"Delivery/Training","id":3.5,"budget":3.5,"used":0}}},"MP-THB-TJB":{"id":153274,"name":"MP-THB-TJB","company":"TH Baker","tasklists":{"Project Management":{"name":"Project Management","id":105,"budget":105,"used":136.25},"Front End Development":{"name":"Front End Development","id":49,"budget":49,"used":161.25},"Systems Development - Magento":{"name":"Systems Development - Magento","id":192.5,"budget":192.5,"used":445.75},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":21},"Delivery & Training":{"name":"Delivery & Training","id":7,"budget":7,"used":0},"Planning":{"name":"Planning","id":21,"budget":21,"used":0},"Data Importing":{"name":"Data Importing","id":70,"budget":70,"used":0},"Testing":{"name":"Testing","id":21,"budget":21,"used":0}}},"MP-THB-TJH":{"id":150179,"name":"MP-THB-TJH","company":"TH Baker","tasklists":{"Project Management":{"name":"Project Management","id":0,"budget":0,"used":16}}},"MP-TOS-SEO-01":{"id":161194,"name":"MP-TOS-SEO-01","company":"The Outdoorshop Retail LLP","tasklists":{"Project Management":{"name":"Project Management","id":7,"budget":7,"used":8},"Planning":{"name":"Planning","id":3,"budget":3,"used":0},"Data Importing":{"name":"Data Importing","id":0,"budget":0,"used":0},"Front End Development":{"name":"Front End Development","id":2.5,"budget":2.5,"used":4.5},"Systems Development":{"name":"Systems Development","id":5,"budget":5,"used":11.5},"Testing":{"name":"Testing","id":2,"budget":2,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":0,"budget":0,"used":0}}},"Nublue GIT project":{"id":162344,"name":"Nublue GIT project","company":"Nublue","tasklists":{"Research and Evaluation":{"name":"Research and Evaluation","id":0,"budget":0,"used":0},"Server and System Setup":{"name":"Server and System Setup","id":0,"budget":0,"used":0},"Workflow and toolset evaluation":{"name":"Workflow and toolset evaluation","id":0,"budget":0,"used":0},"Test Project":{"name":"Test Project","id":0,"budget":0,"used":0},"Procedual changes and project workflow impact":{"name":"Procedual changes and project workflow impact","id":0,"budget":0,"used":0},"Training":{"name":"Training","id":0,"budget":0,"used":0},"Launch":{"name":"Launch","id":0,"budget":0,"used":0}}},"PR-ABB-ATC":{"id":95083,"name":"PR-ABB-ATC","company":"AbbVie Inc","tasklists":{"Project Management":{"name":"Project Management","id":14,"budget":14,"used":21.35},"Research":{"name":"Research","id":7,"budget":7,"used":0},"Planning":{"name":"Planning","id":7,"budget":7,"used":0.87},"User Interface Design":{"name":"User Interface Design","id":14,"budget":14,"used":8.58},"Web Design":{"name":"Web Design","id":21,"budget":21,"used":20.35},"Data / Content Formatting / Importing":{"name":"Data / Content Formatting / Importing","id":7,"budget":7,"used":2},"Front End Development":{"name":"Front End Development","id":28,"budget":28,"used":35.28},"Systems Development":{"name":"Systems Development","id":21,"budget":21,"used":7.27},"Testing":{"name":"Testing","id":7,"budget":7,"used":4.07},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":7.15},"Delivery / Training":{"name":"Delivery / Training","id":3.5,"budget":3.5,"used":0}}},"SDP-AMC-WEB":{"id":159445,"name":"SDP-AMC-WEB","company":"The Acoustic Music Company","tasklists":{"July 2015":{"name":"July 2015","id":5,"budget":5,"used":5},"August 2015":{"name":"August 2015","id":5,"budget":5,"used":7.75}}},"SDP-MER-WEB":{"id":161348,"name":"SDP-MER-WEB","company":"Meridian Healthcare","tasklists":{"August 2015":{"name":"August 2015","id":5,"budget":5,"used":0.5},"September 2015":{"name":"September 2015","id":5,"budget":5,"used":0},"October 2015":{"name":"October 2015","id":5,"budget":5,"used":0},"November 2015":{"name":"November 2015","id":5,"budget":5,"used":0},"December 2015":{"name":"December 2015","id":5,"budget":5,"used":0},"January 2016":{"name":"January 2016","id":5,"budget":5,"used":0},"February 2016":{"name":"February 2016","id":5,"budget":5,"used":0},"March 2016":{"name":"March 2016","id":5,"budget":5,"used":0},"April 2016":{"name":"April 2016","id":5,"budget":5,"used":0},"May 2016":{"name":"May 2016","id":5,"budget":5,"used":0},"June 2016":{"name":"June 2016","id":5,"budget":5,"used":0},"July 2016":{"name":"July 2016","id":5,"budget":5,"used":0}}},"SDP-NHS-WEB2":{"id":153267,"name":"SDP-NHS-WEB2","company":"NHS England","tasklists":{"Systems":{"name":"Systems","id":0,"budget":0,"used":4.5}}},"SDP-NPT-WEB4":{"id":162913,"name":"SDP-NPT-WEB4","company":"New Phytologist Trust","tasklists":{"August 2015":{"name":"August 2015","id":10,"budget":10,"used":1.5},"September 2015":{"name":"September 2015","id":10,"budget":10,"used":0},"October 2015":{"name":"October 2015","id":10,"budget":10,"used":0},"November 2015":{"name":"November 2015","id":10,"budget":10,"used":0},"December 2015":{"name":"December 2015","id":10,"budget":10,"used":0},"January 2016":{"name":"January 2016","id":10,"budget":10,"used":0}}},"SDP-NUB-WEB":{"id":140858,"name":"SDP-NUB-WEB","company":"Nublue","tasklists":{"March 2015":{"name":"March 2015","id":0,"budget":0,"used":207.83},"April 2015":{"name":"April 2015","id":0,"budget":0,"used":90.75},"May 2015":{"name":"May 2015","id":0,"budget":0,"used":74.08},"June 2015":{"name":"June 2015","id":0,"budget":0,"used":43.75},"July 2015":{"name":"July 2015","id":0,"budget":0,"used":123.25},"August 2015":{"name":"August 2015","id":0,"budget":0,"used":0}}},"SDP-THB-WEB":{"id":136564,"name":"SDP-THB-WEB","company":"TH Baker","tasklists":{"April 2015":{"name":"April 2015","id":35,"budget":35,"used":36.75},"May 2015":{"name":"May 2015","id":35,"budget":35,"used":13.5},"June 2015":{"name":"June 2015","id":35,"budget":35,"used":106.75},"July 2015":{"name":"July 2015","id":35,"budget":35,"used":51.25},"August 2015":{"name":"August 2015","id":35,"budget":35,"used":1.5}}},"SDP1-NUT-MAG":{"id":156647,"name":"SDP1-NUT-MAG","company":"Nutricia Limited (UK)","tasklists":{"June 2015":{"name":"June 2015","id":5.5,"budget":5.5,"used":3},"July 2015":{"name":"July 2015","id":5,"budget":5,"used":2.25},"August 2015":{"name":"August 2015","id":5,"budget":5,"used":0},"September 2015":{"name":"September 2015","id":5,"budget":5,"used":0},"October 2015":{"name":"October 2015","id":5,"budget":5,"used":0}}},"SDP1-NUT-WEB":{"id":95297,"name":"SDP1-NUT-WEB","company":"Nutricia Limited (UK)","tasklists":{"August 2015":{"name":"August 2015","id":5,"budget":5,"used":0.25},"September 2015":{"name":"September 2015","id":5,"budget":5,"used":0},"October 2015":{"name":"October 2015","id":5,"budget":5,"used":0},"November 2015":{"name":"November 2015","id":5,"budget":5,"used":0},"December 2015":{"name":"December 2015","id":5,"budget":5,"used":0}}},"SDP1-TOS-WEB":{"id":154622,"name":"SDP1-TOS-WEB","company":"The Outdoorshop Retail LLP","tasklists":{"July 2015":{"name":"July 2015","id":10,"budget":10,"used":22.25},"August 2015":{"name":"August 2015","id":10,"budget":10,"used":3.75},"September 2015":{"name":"September 2015","id":10,"budget":10,"used":0},"October 2015":{"name":"October 2015","id":10,"budget":10,"used":0},"November 2015":{"name":"November 2015","id":10,"budget":10,"used":0},"December 2015":{"name":"December 2015","id":10,"budget":10,"used":0},"January 2016":{"name":"January 2016","id":10,"budget":10,"used":0},"February 2016":{"name":"February 2016","id":10,"budget":10,"used":0},"March 2016":{"name":"March 2016","id":10,"budget":10,"used":0}}},"SDP2-AZD-WEB":{"id":156020,"name":"SDP2-AZD-WEB","company":"Azendi","tasklists":{"June 2015":{"name":"June 2015","id":5,"budget":5,"used":7.5},"July 2015":{"name":"July 2015","id":5,"budget":5,"used":6.75}}},"SDP2-TRA-WEB":{"id":156956,"name":"SDP2-TRA-WEB","company":"Training Plus","tasklists":{"July 2015":{"name":"July 2015","id":10,"budget":10,"used":11}}},"SDP3-AZD-WEB":{"id":162911,"name":"SDP3-AZD-WEB","company":"Azendi","tasklists":{"August 2015":{"name":"August 2015","id":5,"budget":5,"used":0.75},"September 2015":{"name":"September 2015","id":5,"budget":5,"used":0},"October 2015":{"name":"October 2015","id":5,"budget":5,"used":0}}},"SDP3-PUM-WEB":{"id":161862,"name":"SDP3-PUM-WEB","company":"Pumps UK Ltd","tasklists":{"August 2015":{"name":"August 2015","id":10,"budget":10,"used":2.75},"September 2015":{"name":"September 2015","id":10,"budget":10,"used":0},"October 2015":{"name":"October 2015","id":10,"budget":10,"used":0}}},"SDP4-ARC-WEB":{"id":153719,"name":"SDP4-ARC-WEB","company":"Archery World","tasklists":{"August 2015":{"name":"August 2015","id":5,"budget":5,"used":0.75}}},"SDP4-EUR-WEB":{"id":160510,"name":"SDP4-EUR-WEB","company":"Eurofit Systems","tasklists":{"July 2015":{"name":"July 2015","id":5,"budget":5,"used":3.5},"August 2015":{"name":"August 2015","id":5,"budget":5,"used":8.5},"September 2015":{"name":"September 2015","id":5,"budget":5,"used":0}}},"SDP5-ASP-WEB":{"id":158934,"name":"SDP5-ASP-WEB","company":"Aspen Electronics","tasklists":{"July 2015":{"name":"July 2015","id":5,"budget":5,"used":21.5},"August 2015":{"name":"August 2015","id":5,"budget":5,"used":3.75},"September 2015":{"name":"September 2015","id":5,"budget":5,"used":0}}},"SP-AMC-V12":{"id":163154,"name":"SP-AMC-V12","company":"The Acoustic Music Company","tasklists":{"Project Management":{"name":"Project Management","id":1,"budget":1,"used":3.25},"Research":{"name":"Research","id":0,"budget":0,"used":0},"Planning":{"name":"Planning","id":0,"budget":0,"used":0},"User Interface Prototyping":{"name":"User Interface Prototyping","id":0,"budget":0,"used":0},"Web Design":{"name":"Web Design","id":0,"budget":0,"used":0},"Data Importing":{"name":"Data Importing","id":0,"budget":0,"used":0},"Front End Development":{"name":"Front End Development","id":0,"budget":0,"used":7.5},"Systems Development - Magento":{"name":"Systems Development - Magento","id":0,"budget":0,"used":1.5},"Systems Development":{"name":"Systems Development","id":2,"budget":2,"used":0},"Testing":{"name":"Testing","id":2,"budget":2,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":0,"budget":0,"used":0}}},"SP-ART-CHA":{"id":160873,"name":"SP-ART-CHA","company":"Artic Design","tasklists":{"Project Management":{"name":"Project Management","id":4,"budget":4,"used":0.75},"Web Design":{"name":"Web Design","id":1,"budget":1,"used":0},"Front End Development":{"name":"Front End Development","id":2,"budget":2,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":5.5,"budget":5.5,"used":8.75},"Testing":{"name":"Testing","id":1,"budget":1,"used":0}}},"SP-ART-WEB":{"id":160379,"name":"SP-ART-WEB","company":"Artic Design","tasklists":{"Project Management":{"name":"Project Management","id":1,"budget":1,"used":1.75},"Web Design":{"name":"Web Design","id":1,"budget":1,"used":2},"Systems Development":{"name":"Systems Development","id":1,"budget":1,"used":3}}},"SP-GHT-SUP":{"id":161455,"name":"SP-GHT-SUP","company":"MBL Group","tasklists":{"Project Management":{"name":"Project Management","id":0,"budget":0,"used":2.25},"10 hours of SDP Work":{"name":"10 hours of SDP Work","id":0,"budget":0,"used":7.25},"10 hours extra of SDP time":{"name":"10 hours extra of SDP time","id":0,"budget":0,"used":0}}},"SP-KON-PAY":{"id":160226,"name":"SP-KON-PAY","company":"Konjac Sponge Company","tasklists":{"Project Management":{"name":"Project Management","id":1,"budget":1,"used":1.25},"Research":{"name":"Research","id":0,"budget":0,"used":0},"Planning":{"name":"Planning","id":0,"budget":0,"used":0},"User Interface Prototyping":{"name":"User Interface Prototyping","id":0,"budget":0,"used":0},"Web Design":{"name":"Web Design","id":0,"budget":0,"used":0},"Data Importing":{"name":"Data Importing","id":0,"budget":0,"used":0},"Front End Development":{"name":"Front End Development","id":0,"budget":0,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":3,"budget":3,"used":1.25},"Testing":{"name":"Testing","id":0,"budget":0,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":0,"budget":0,"used":0}}},"SP-KOV-SER 02":{"id":159255,"name":"SP-KOV-SER 02","company":"Kovert Designs","tasklists":{"Project Management":{"name":"Project Management","id":0,"budget":0,"used":0.5},"Systems Development":{"name":"Systems Development","id":0,"budget":0,"used":1}}},"SP-LOR-LAN":{"id":160238,"name":"SP-LOR-LAN","company":"Lordale","tasklists":{"Project Management":{"name":"Project Management","id":3.5,"budget":3.5,"used":1.5},"Systems Development - Magento":{"name":"Systems Development - Magento","id":3.5,"budget":3.5,"used":3.75},"Testing":{"name":"Testing","id":3.5,"budget":3.5,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":0,"budget":0,"used":0}}},"SP-LUX-CAL":{"id":158311,"name":"SP-LUX-CAL","company":"Luxury Flooring Company","tasklists":{"Project Management":{"name":"Project Management","id":2,"budget":2,"used":14},"Web Design":{"name":"Web Design","id":1,"budget":1,"used":0},"Front End Development":{"name":"Front End Development","id":2,"budget":2,"used":7.5},"Systems Development - Magento":{"name":"Systems Development - Magento","id":7,"budget":7,"used":18.25},"Testing":{"name":"Testing","id":2,"budget":2,"used":0}}},"SP-NUT-CMU":{"id":162570,"name":"SP-NUT-CMU","company":"Nutricia Limited (UK)","tasklists":{"Project Management":{"name":"Project Management","id":8,"budget":8,"used":0},"Research":{"name":"Research","id":2,"budget":2,"used":0},"Data Management":{"name":"Data Management","id":2,"budget":2,"used":0},"Systems Development - Magento":{"name":"Systems Development - Magento","id":9,"budget":9,"used":0},"Testing":{"name":"Testing","id":4,"budget":4,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":1,"budget":1,"used":0}}},"SP-NUT-SRO":{"id":161157,"name":"SP-NUT-SRO","company":"Nutricia Limited (UK)","tasklists":{"Project Management":{"name":"Project Management","id":1.5,"budget":1.5,"used":1.25}}},"SP-PFP-PAT":{"id":162091,"name":"SP-PFP-PAT","company":"Plastics4Performance","tasklists":{"Project Management":{"name":"Project Management","id":1,"budget":1,"used":1},"Systems Development - Magento":{"name":"Systems Development - Magento","id":1,"budget":1,"used":0},"Systems Development":{"name":"Systems Development","id":0,"budget":0,"used":0},"Testing":{"name":"Testing","id":2,"budget":2,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0}}},"SP-SMI-MUL ":{"id":160027,"name":"SP-SMI-MUL ","company":"Smiffys","tasklists":{"Project Management":{"name":"Project Management","id":1,"budget":1,"used":8.75},"Systems Development":{"name":"Systems Development","id":1,"budget":1,"used":6.25}}},"SP-TAP-INV":{"id":156516,"name":"SP-TAP-INV","company":"TapStore","tasklists":{"Project Management":{"name":"Project Management","id":1,"budget":1,"used":1.75},"Systems Development - Magento":{"name":"Systems Development - Magento","id":4,"budget":4,"used":5.75},"Testing":{"name":"Testing","id":0,"budget":0,"used":0},"Fixes":{"name":"Fixes","id":0,"budget":0,"used":0},"Delivery & Training":{"name":"Delivery & Training","id":0,"budget":0,"used":0}}}}
+module.exports={
+    "95275": {
+        "id": 95275,
+        "name": "Agency Folder",
+        "company": "Nublue",
+        "tasklists": {
+            "295617": {
+                "id": 295617,
+                "name": "Staff",
+                "budget": 0,
+                "used": 7875.95
+            },
+            "329558": {
+                "id": 329558,
+                "name": "Leftover Tasks",
+                "budget": 0,
+                "used": 16.92
+            },
+            "301072": {
+                "id": 301072,
+                "name": "Sales Opportunities",
+                "budget": 0,
+                "used": 972.83
+            },
+            "316404": {
+                "id": 316404,
+                "name": "Charity SDP",
+                "budget": 0,
+                "used": 16.5
+            },
+            "316403": {
+                "id": 316403,
+                "name": "NuBlue SDP",
+                "budget": 0,
+                "used": 204.15
+            }
+        }
+    },
+    "132694": {
+        "id": 132694,
+        "name": "DB-ENG-LEA",
+        "company": "Engineering Insights",
+        "tasklists": {
+            "349997": {
+                "id": 349997,
+                "name": "Project Management",
+                "budget": 119,
+                "used": 182.08
+            },
+            "349995": {
+                "id": 349995,
+                "name": "Research",
+                "budget": 56,
+                "used": 16
+            },
+            "349989": {
+                "id": 349989,
+                "name": "Front End Development",
+                "budget": 49,
+                "used": 150.25
+            },
+            "349992": {
+                "id": 349992,
+                "name": "Web Design",
+                "budget": 56,
+                "used": 99.5
+            },
+            "349988": {
+                "id": 349988,
+                "name": "Systems Development",
+                "budget": 175,
+                "used": 435.08
+            },
+            "349987": {
+                "id": 349987,
+                "name": "Testing",
+                "budget": 56,
+                "used": 16.75
+            },
+            "349986": {
+                "id": 349986,
+                "name": "Go Live Schedule",
+                "budget": 0,
+                "used": 0
+            },
+            "349985": {
+                "id": 349985,
+                "name": "Delivery/Training",
+                "budget": 21,
+                "used": 0
+            },
+            "349984": {
+                "id": 349984,
+                "name": "Free Support Period",
+                "budget": 0,
+                "used": 0
+            },
+            "496488": {
+                "id": 496488,
+                "name": "Planning",
+                "budget": 49,
+                "used": 0
+            },
+            "496489": {
+                "id": 496489,
+                "name": "User Interface Design",
+                "budget": 14,
+                "used": 0
+            },
+            "496490": {
+                "id": 496490,
+                "name": "Data / Content Formatting / Importing",
+                "budget": 14,
+                "used": 0
+            },
+            "496491": {
+                "id": 496491,
+                "name": "Front End Development",
+                "budget": 140,
+                "used": 0
+            }
+        }
+    },
+    "160993": {
+        "id": 160993,
+        "name": "DB-GRO-WEB",
+        "company": "Growing Well",
+        "tasklists": {
+            "486187": {
+                "id": 486187,
+                "name": "Project Management",
+                "budget": 42,
+                "used": 15.75
+            },
+            "486186": {
+                "id": 486186,
+                "name": "Research",
+                "budget": 0,
+                "used": 2
+            },
+            "486185": {
+                "id": 486185,
+                "name": "Planning",
+                "budget": 14,
+                "used": 9.75
+            },
+            "486184": {
+                "id": 486184,
+                "name": "User Interface Prototyping",
+                "budget": 3.5,
+                "used": 0
+            },
+            "486183": {
+                "id": 486183,
+                "name": "Web Design",
+                "budget": 10.5,
+                "used": 0
+            },
+            "486182": {
+                "id": 486182,
+                "name": "Data Importing",
+                "budget": 10.5,
+                "used": 0
+            },
+            "486181": {
+                "id": 486181,
+                "name": "Front End Development",
+                "budget": 14,
+                "used": 0
+            },
+            "486188": {
+                "id": 486188,
+                "name": "Systems Development - Magento",
+                "budget": 28,
+                "used": 0
+            },
+            "486180": {
+                "id": 486180,
+                "name": "Systems Development",
+                "budget": 0,
+                "used": 0
+            },
+            "486179": {
+                "id": 486179,
+                "name": "Testing",
+                "budget": 7,
+                "used": 0
+            },
+            "486189": {
+                "id": 486189,
+                "name": "Fixes",
+                "budget": 0,
+                "used": 0
+            },
+            "486178": {
+                "id": 486178,
+                "name": "Delivery & Training",
+                "budget": 3.5,
+                "used": 0
+            }
+        }
+    }
+}
 },{}]},{},[2]);

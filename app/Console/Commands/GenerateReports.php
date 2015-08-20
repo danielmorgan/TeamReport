@@ -54,25 +54,30 @@ class GenerateReports extends Command
         $projects = Teamwork::project()->all()['projects'];
         $this->output->progressStart(count($projects));
 
+        $i = 0;
+
         foreach ($projects as $project) {
-            $projectId = (int) $project['id'];
-            $tasklistsArray[$projectId] = [];
-            $tasklistsArray[$projectId]['id'] = $projectId;
-            $tasklistsArray[$projectId]['name'] = $project['name'];
-            $tasklistsArray[$projectId]['company'] = $project['company']['name'];
+            if ($i < 3) {
+                $projectId = (int) $project['id'];
+                $tasklistsArray[$projectId] = [];
+                $tasklistsArray[$projectId]['id'] = $projectId;
+                $tasklistsArray[$projectId]['name'] = $project['name'];
+                $tasklistsArray[$projectId]['company'] = $project['company']['name'];
 
-            $tasklists = Teamwork::project($projectId)->tasklists()['tasklists'];
-            foreach ($tasklists as $tasklist) {
-                $tasklistId = (int) $tasklist['id'];
-                $tasklistName = $this->getTasklistName($tasklist['name']);
+                $tasklists = Teamwork::project($projectId)->tasklists()['tasklists'];
+                foreach ($tasklists as $tasklist) {
+                    $tasklistId = (int) $tasklist['id'];
+                    $tasklistName = $this->getTasklistName($tasklist['name']);
 
-                $tasklistsArray[$projectId]['tasklists'][$tasklistId]['id'] = $tasklistId;
-                $tasklistsArray[$projectId]['tasklists'][$tasklistId]['name'] = $tasklistName;
-                $tasklistsArray[$projectId]['tasklists'][$tasklistId]['budget'] = $this->getTasklistbudget($tasklist['name']);
-                $tasklistsArray[$projectId]['tasklists'][$tasklistId]['used'] = (float) Teamwork::tasklist((int) $tasklist['id'])->timeTotal()['projects'][0]['tasklist']['time-totals']['total-hours-sum'];
+                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['id'] = $tasklistId;
+                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['name'] = $tasklistName;
+                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['budget'] = $this->getTasklistbudget($tasklist['name']);
+                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['used'] = (float) Teamwork::tasklist((int) $tasklist['id'])->timeTotal()['projects'][0]['tasklist']['time-totals']['total-hours-sum'];
+                }
+
+                $this->output->progressAdvance();
             }
-
-            $this->output->progressAdvance();
+            $i++;
         }
 
         $this->saveReport($tasklistsArray);

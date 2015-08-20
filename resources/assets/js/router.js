@@ -2,6 +2,10 @@
 var TeamReport = TeamReport || {};
 
 var Backbone = require('backbone');
+TeamReport.Projects = require('./Model/Projects.js');
+TeamReport.Project = require('./Model/Project.js');
+TeamReport.ProjectsView = require('./View/ProjectsView.js');
+TeamReport.ProjectView = require('./View/ProjectView.js');
 
 TeamReport.Workspace = Backbone.Router.extend({
     routes: {
@@ -16,11 +20,13 @@ TeamReport.Workspace = Backbone.Router.extend({
     },
 
     projects: function() {
-        console.log('projects');
+        var projects = new TeamReport.Projects();
+        new TeamReport.ProjectsView({ collection: projects });
     },
 
     project: function(id) {
-        console.log('project', id);
+        var project = new TeamReport.Project({ id: id });
+        new TeamReport.ProjectView({ model: project });
     }
 });
 
