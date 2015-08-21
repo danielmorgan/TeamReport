@@ -70,10 +70,12 @@ class GenerateReports extends Command
                     $tasklistId = (int) $tasklist['id'];
                     $tasklistName = $this->getTasklistName($tasklist['name']);
 
-                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['id'] = $tasklistId;
-                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['name'] = $tasklistName;
-                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['budget'] = $this->getTasklistbudget($tasklist['name']);
-                    $tasklistsArray[$projectId]['tasklists'][$tasklistId]['used'] = (float) Teamwork::tasklist((int) $tasklist['id'])->timeTotal()['projects'][0]['tasklist']['time-totals']['total-hours-sum'];
+                    $tasklistsArray[$projectId]['tasklists'][] = [
+                        'id' => $tasklistId,
+                        'name' => $tasklistName,
+                        'budget' => $this->getTasklistbudget($tasklist['name']),
+                        'used' => (float) Teamwork::tasklist((int) $tasklist['id'])->timeTotal()['projects'][0]['tasklist']['time-totals']['total-hours-sum']
+                    ];
                 }
 
                 $this->output->progressAdvance();

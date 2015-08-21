@@ -4,7 +4,7 @@ var TeamReport = TeamReport || {};
 var _ = require('lodash');
 var $ = require('jquery');
 var Backbone = require('backbone');
-TeamReport.ProjectView = require('./ProjectView.js');
+TeamReport.ProjectsSubView = require('./ProjectsSubView.js');
 
 TeamReport.ProjectsView = Backbone.View.extend({
     tagName: 'ul',
@@ -19,7 +19,7 @@ TeamReport.ProjectsView = Backbone.View.extend({
     buildSubViews: function() {
         var self = this;
         _.forEach(this.collection.models, function(model) {
-            var projectView = new TeamReport.ProjectView({ model: model });
+            var projectView = new TeamReport.ProjectsSubView({ model: model });
             self.$el.append(projectView.$el);
         });
     },

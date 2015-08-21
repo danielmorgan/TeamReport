@@ -1,6 +1,7 @@
 'use strict';
 var TeamReport = TeamReport || {};
 
+var $ = require('jquery');
 var Backbone = require('backbone');
 TeamReport.Projects = require('./Model/Projects.js');
 TeamReport.Project = require('./Model/Project.js');
@@ -9,14 +10,18 @@ TeamReport.ProjectView = require('./View/ProjectView.js');
 
 TeamReport.Workspace = Backbone.Router.extend({
     routes: {
-        '':                     'projects',
+        '':                     'redirectHome',
         'projects':             'projects',
-        'project/:id':          'project',
+        'projects/:id':         'project',
         '*notFound':            'notFound',
     },
 
     notFound: function() {
-        console.error('Error: 404 - View not found.');
+        this.redirectHome();
+    },
+
+    redirectHome: function() {
+        this.navigate('/projects', {trigger: true});
     },
 
     projects: function() {

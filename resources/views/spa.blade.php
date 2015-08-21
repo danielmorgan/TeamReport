@@ -6,7 +6,7 @@
     </head>
     <body>
         <div id="container" class="container">
-            <h1>Hello World</h1>
+            <h3>Loading...</h3>
         </div>
     </body>
 </html>

@@ -26,13 +26,22 @@ class ProjectsController extends Controller
     /**
      * Display the specified project resource.
      *
-     * @param  int  $project    Project ID
+     * @param  int  $id     Project ID
      * @return Response
      */
-    public function show($project)
+    public function show($id)
     {
         $report = json_decode(Storage::get('report.json'), true);
+        $result = array_first($report, function($key, $project) use (&$id) {
+            if ($project['id'] == $id || trim($project['name']) == $id) {
+                return $project;
+            }
+        });
 
-        return response()->json($report[$project]);
+        if ($result) {
+            return response()->json($result);
+        }
+
+        return response()->json(['message' => 'Project not found'], 404);
     }
 }
