@@ -13,11 +13,11 @@ TeamReport.ProjectView = Backbone.View.extend({
     initialize: function() {
         this.model.on('change', this.render, this);
         this.model.fetch();
+        this.render();
     },
 
     render: function() {
         this.$el.html(this.template(this.model.attributes));
-        $('#container').html(this.$el);
 
         return this;
     }

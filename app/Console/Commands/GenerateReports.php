@@ -14,6 +14,7 @@ class GenerateReports extends Command
      * @var string
      */
     protected $signature = 'reports:generate
+        {amount? : The amount of projects you want to retrieve (for testing purposes).}
         {--production}';
 
     /**
@@ -57,7 +58,7 @@ class GenerateReports extends Command
         $i = 0;
 
         foreach ($projects as $project) {
-            if ($i < 3) {
+            if (! $this->argument('amount') || $i < $this->argument('amount')) {
                 $projectId = (int) $project['id'];
                 $tasklistsArray[$projectId] = [];
                 $tasklistsArray[$projectId]['id'] = $projectId;
@@ -80,7 +81,7 @@ class GenerateReports extends Command
             $i++;
         }
 
-        $this->saveReport($tasklistsArray);
+        $this->saveReport(array_values($tasklistsArray));
 
         $this->output->progressFinish();
     }

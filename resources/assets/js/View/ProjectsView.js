@@ -11,23 +11,24 @@ TeamReport.ProjectsView = Backbone.View.extend({
     className: 'projects',
 
     initialize: function() {
-        console.log(this.collection);
-        var self = this;
-
-        this.collection.on('update', this.test, this);
+        this.collection.on('update', this.render, this);
         this.collection.fetch();
-
         this.render();
     },
 
-    test: function() {
-        console.log(this.collection.models);
+    buildSubViews: function() {
+        var self = this;
+        _.forEach(this.collection.models, function(model) {
+            var projectView = new TeamReport.ProjectView({ model: model });
+            self.$el.append(projectView.$el);
+        });
     },
 
     render: function() {
-        // _.each(this.subViews, function(view) {
-        //     this.$el.append(view.el);
-        // }, this);
+        this.buildSubViews();
+        $('#container').html(this.$el);
+
+        return this;
     }
 });
 

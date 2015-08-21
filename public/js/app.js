@@ -19490,11 +19490,11 @@ TeamReport.ProjectView = Backbone.View.extend({
     initialize: function initialize() {
         this.model.on('change', this.render, this);
         this.model.fetch();
+        this.render();
     },
 
     render: function render() {
         this.$el.html(this.template(this.model.attributes));
-        $('#container').html(this.$el);
 
         return this;
     }
@@ -19516,23 +19516,24 @@ TeamReport.ProjectsView = Backbone.View.extend({
     className: 'projects',
 
     initialize: function initialize() {
-        console.log(this.collection);
-        var self = this;
-
-        this.collection.on('update', this.test, this);
+        this.collection.on('update', this.render, this);
         this.collection.fetch();
-
         this.render();
     },
 
-    test: function test() {
-        console.log(this.collection.models);
+    buildSubViews: function buildSubViews() {
+        var self = this;
+        _.forEach(this.collection.models, function (model) {
+            var projectView = new TeamReport.ProjectView({ model: model });
+            self.$el.append(projectView.$el);
+        });
     },
 
     render: function render() {
-        // _.each(this.subViews, function(view) {
-        //     this.$el.append(view.el);
-        // }, this);
+        this.buildSubViews();
+        $('#container').html(this.$el);
+
+        return this;
     }
 });
 
