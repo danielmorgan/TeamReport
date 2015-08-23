@@ -15,7 +15,6 @@
             padding: 15px 20px;
             font-size: 0.9em;
             background: $light;
-            &.over-budget { background: $brand-primary; color: $lighter; }
             .divider { color: $light - 50%; }
         }
 
@@ -42,11 +41,22 @@
 
     h3 {
         margin: 0 0 10px;
-        float: left;
     }
     .id {
-        float: right;
+        position: absolute;
+        top: 20px;
+        right: 20px;
         font-size: 0.8em;
-        a { color: $light - 75%; }
+        color: $light - 75%;
+    }
+
+    &.over-budget .totals {
+        color: $brand-primary;
+        &::after {
+            content: "(over budget)";
+            font-size: 0.8em;
+            float: right;
+            color: $light - 75%;
+        }
     }
 }

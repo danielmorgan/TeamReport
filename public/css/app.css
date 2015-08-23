@@ -3524,6 +3524,24 @@ input[type="button"].btn-block {
   .hidden-print {
     display: none !important; } }
 
+.hvr-float {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-timing-function: ease-out; }
+
+.hvr-float:hover, .hvr-float:focus, .hvr-float:active {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px); }
+
 /**
  * Partials
  * Individual components e.g. header, footer, post, typography, buttons, forms.
@@ -3554,6 +3572,12 @@ button:hover {
 .nopadding {
   padding: 0 !important;
   margin: 0 !important; }
+
+#loading {
+  margin: 60px 0 0;
+  color: #EE6352;
+  font-size: 3em;
+  text-align: center; }
 
 body {
   font-family: 'Open Sans', Arial, sans-serif;
@@ -3683,9 +3707,6 @@ a {
     padding: 15px 20px;
     font-size: 0.9em;
     background: #F6F6FA; }
-    .project-summary > a .totals.over-budget {
-      background: #EE6352;
-      color: #FFFFFF; }
     .project-summary > a .totals .divider {
       color: #c4c4c8; }
   .project-summary > a:hover .info {
@@ -3703,17 +3724,27 @@ a {
     margin: 0 0 5px; }
 
 .project-summary h3 {
-  margin: 0 0 10px;
-  float: left; }
+  margin: 0 0 10px; }
 
 .project-summary .id {
-  float: right;
-  font-size: 0.8em; }
-  .project-summary .id a {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.8em;
+  color: #ababaf; }
+
+.project-summary.over-budget .totals {
+  color: #EE6352; }
+  .project-summary.over-budget .totals::after {
+    content: "(over budget)";
+    font-size: 0.8em;
+    float: right;
     color: #ababaf; }
 
 .project {
-  margin: 40px 0 0; }
+  margin: 30px 0 0; }
+  .project #chart {
+    margin: 0 0 30px; }
   .project .info {
     position: relative;
     display: block;
@@ -3724,10 +3755,11 @@ a {
     border: 1px solid #ceced2;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
     .project .info h1 {
-      margin: 0 0 10px;
-      float: left; }
+      margin: 0 0 10px; }
     .project .info .id {
-      float: right;
+      position: absolute;
+      top: 20px;
+      right: 20px;
       font-size: 0.8em; }
       .project .info .id a {
         color: #ababaf; }
@@ -3739,9 +3771,13 @@ a {
       .project .info table.tasklists tbody tr td {
         padding: 5px;
         font-size: 0.8em; }
-      .project .info table.tasklists tbody tr:hover td {
+      .project .info table.tasklists tbody tr:hover td,
+      .project .info table.tasklists tbody tr.highlighted td {
         color: #FFFFFF;
         background: #EE6352; }
+        .project .info table.tasklists tbody tr:hover td .unit,
+        .project .info table.tasklists tbody tr.highlighted td .unit {
+          color: #ffc7b6; }
       .project .info table.tasklists .key {
         color: black; }
       .project .info table.tasklists .unit {

@@ -34,7 +34,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="team-report" class="col-xs-12">
-                    <h3>Loading...</h3>
+                    <h2 id="loading">Loading...</h2>
                 </div>
             </div>
         </div>
@@ -47,10 +47,8 @@
                 <div class="info">
                     <h3><%= name %></h3>
                     <span class="id">#<%= id %></span>
-                    <div class="clearfix"></div>
                     <p><%= company %></p>
                 </div>
-                <div class="chart"></div>
                 <div class="totals">
                     <span class="used"><%= Math.round(used * 100) / 100 %></span>
                     <span class="divider"> / </span>
@@ -61,11 +59,12 @@
         </script>
 
         <script type="text/html" class="project" id="template-project">
-            <div class="col-sm-6 col-md-8 chart"></div>
-            <aside class="col-sm-6 col-md-4 info">
+            <div class="col-md-8">
+                <canvas id="chart"></canvas>
+            </div>
+            <aside class="col-md-4 info">
                 <h1><a href="/#projects/<%= name %>"><%= name %></a></h1>
                 <span class="id"><a href="/#projects/<%= id %>">#<%= id %></a></span>
-                <div class="clearfix"></div>
                 <p><%= company %></p>
                 <table class="tasklists">
                     <thead>

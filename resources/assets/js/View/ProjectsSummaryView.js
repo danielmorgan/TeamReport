@@ -24,6 +24,13 @@ TeamReport.ProjectSummaryView = Backbone.View.extend({
         });
 
         this.$el.html(this.template(this.model.attributes));
+
+        this.$el.addClass(this.className);
+        this.$el.addClass('hvr-float');
+
+        if (this.model.get('used') > this.model.get('budget')) {
+            this.$el.addClass('over-budget');
+        };
     },
 
     sumAttributes: function(attr) {
@@ -36,10 +43,6 @@ TeamReport.ProjectSummaryView = Backbone.View.extend({
 
     render: function() {
         this.buildProjectEl();
-        this.$el.addClass(this.className);
-        if (this.model.get('used') > this.model.get('budget')) {
-            this.$el.addClass('over-budget');
-        };
 
         return this;
     }

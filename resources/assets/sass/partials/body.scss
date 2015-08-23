@@ -25,3 +25,10 @@ button:hover {
    padding: 0 !important;
    margin: 0 !important;
 }
+
+#loading {
+    margin: 60px 0 0;
+    color: $brand-primary;
+    font-size: 3em;
+    text-align: center;
+}
