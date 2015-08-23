@@ -20,5 +20,5 @@ Route::get('/', function ($path = null) {
 });
 
 Route::any('{undefinedRoute}', function ($undefinedRoute) {
-    return view('spa');
+    return Redirect::to('/');
 })->where('undefinedRoute', '([A-z\d-\/_.]+)?');

@@ -19522,7 +19522,7 @@ var Backbone = require('backbone');
 TeamReport.ProjectsSubView = Backbone.View.extend({
     tagName: 'li',
     className: 'project',
-    template: _.template('<a href="/projects/<%= name %>"><%= id %> - <%= name %> - <%= company %></a>'),
+    template: _.template('<a href="/#projects/<%= name %>"><%= id %> - <%= name %> - <%= company %></a>'),
 
     initialize: function initialize() {
         this.model.on('change', this.render, this);
@@ -19586,7 +19586,7 @@ TeamReport.Workspace = require('./router.js');
 new TeamReport.Workspace();
 
 $(function () {
-    Backbone.history.start({ pushState: true });
+    Backbone.history.start({ pushState: false });
 });
 
 },{"./router.js":11,"backbone":1,"jquery":3}],11:[function(require,module,exports){
@@ -19605,11 +19605,23 @@ TeamReport.Workspace = Backbone.Router.extend({
         '': 'redirectHome',
         'projects': 'projects',
         'projects/:id': 'project',
-        '*notFound': 'notFound'
+        '*notFound': 'redirectHome'
     },
 
-    notFound: function notFound() {
-        this.redirectHome();
+    initialize: function initialize() {
+        // Override default anchor behaviour, and replace it
+        // with Backbone.history.navigate()
+        $(document).on('click', 'a:not([data-bypass])', function (event) {
+            var href = {
+                prop: $(this).prop('href'),
+                attr: $(this).attr('href')
+            };
+            var root = location.protocol + '//' + location.host + TeamReport.root;
+            if (href.prop && href.prop.slice(0, root.length) === root) {
+                event.preventDefault();
+                this.navigate(href.attr, true);
+            }
+        });
     },
 
     redirectHome: function redirectHome() {

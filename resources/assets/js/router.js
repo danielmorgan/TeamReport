@@ -13,15 +13,27 @@ TeamReport.Workspace = Backbone.Router.extend({
         '':                     'redirectHome',
         'projects':             'projects',
         'projects/:id':         'project',
-        '*notFound':            'notFound',
+        '*notFound':            'redirectHome',
     },
 
-    notFound: function() {
-        this.redirectHome();
+    initialize: function() {
+        // Override default anchor behaviour, and replace it 
+        // with Backbone.history.navigate()
+        $(document).on('click', 'a:not([data-bypass])', function(event) {
+            var href = {
+                prop: $(this).prop('href'),
+                attr: $(this).attr('href')
+            };
+            var root = location.protocol + '//' + location.host + TeamReport.root;
+            if (href.prop && href.prop.slice(0, root.length) === root) {
+                event.preventDefault();
+                this.navigate(href.attr, true);
+            }
+        });
     },
 
     redirectHome: function() {
-        this.navigate('/projects', {trigger: true});
+        this.navigate('/projects', { trigger: true });
     },
 
     projects: function() {

@@ -8,5 +8,5 @@ TeamReport.Workspace = require('./router.js');
 new TeamReport.Workspace();
 
 $(function() {
-    Backbone.history.start({ pushState: true });
+    Backbone.history.start({ pushState: false });
 });

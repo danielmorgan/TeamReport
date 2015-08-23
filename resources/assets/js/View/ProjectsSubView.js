@@ -8,7 +8,7 @@ var Backbone = require('backbone');
 TeamReport.ProjectsSubView = Backbone.View.extend({
     tagName: 'li',
     className: 'project',
-    template: _.template('<a href="/projects/<%= name %>"><%= id %> - <%= name %> - <%= company %></a>'),
+    template: _.template('<a href="/#projects/<%= name %>"><%= id %> - <%= name %> - <%= company %></a>'),
 
     initialize: function() {
         this.model.on('change', this.render, this);
