@@ -73,6 +73,13 @@
                             </tr>
                         <% }); %>
                     </tbody>
+                    <tfoot>
+                        <tr class="totals">
+                            <td class="key">Totals</td>
+                            <td><%= used %> <span class="unit">hrs</span></td>
+                            <td><%= budget %> <span class="unit">hrs</span></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </aside>
         </script>

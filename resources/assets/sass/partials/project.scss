@@ -19,16 +19,31 @@
         table.tasklists {
             width: 100%;
             margin: 20px 0 0;
-            font-size: 0.8em;
-            tr:hover {
-                td {
-                    color: $lighter;
-                    background: $brand-primary;
+            tbody {
+                tr {
+                    td {
+                        padding: 5px;
+                        font-size: 0.8em;
+                    }
+                    &:hover td {
+                        color: $lighter;
+                        background: $brand-primary;
+                    }
                 }
             }
-            td, th { padding: 5px; }
-            &.key { font-weight: bold; }
-            &.unit { color: $dark; }
+            .key { color: $dark - 25%; }
+            .unit { color: $light - 75%; }
+            thead th {
+                font-weight: bold;
+                color: $brand-primary;
+                padding: 0 5px;
+            }
+            tfoot td {
+                font-weight: bold;
+                padding: 10px 5px;
+                margin-top: 10px;
+                border-top: 1px solid $light - 25%;
+            }
         }
     }
 }

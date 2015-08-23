@@ -3711,16 +3711,25 @@ a {
       font-size: 1em; }
     .project .info table.tasklists {
       width: 100%;
-      margin: 20px 0 0;
-      font-size: 0.8em; }
-      .project .info table.tasklists tr:hover td {
+      margin: 20px 0 0; }
+      .project .info table.tasklists tbody tr td {
+        padding: 5px;
+        font-size: 0.8em; }
+      .project .info table.tasklists tbody tr:hover td {
         color: #FFFFFF;
         background: #EE6352; }
-      .project .info table.tasklists td, .project .info table.tasklists th {
-        padding: 5px; }
-      .project .info table.tasklists.key {
-        font-weight: bold; }
-      .project .info table.tasklists.unit {
-        color: #0F0F11; }
+      .project .info table.tasklists .key {
+        color: black; }
+      .project .info table.tasklists .unit {
+        color: #ababaf; }
+      .project .info table.tasklists thead th {
+        font-weight: bold;
+        color: #EE6352;
+        padding: 0 5px; }
+      .project .info table.tasklists tfoot td {
+        font-weight: bold;
+        padding: 10px 5px;
+        margin-top: 10px;
+        border-top: 1px solid #dddde1; }
 
 /*# sourceMappingURL=app.css.map */
