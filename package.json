@@ -17,6 +17,7 @@
     "backbone": "^1.2.2",
     "bootstrap-sass": "^3.0.0",
     "chart.js": "^1.0.2",
+    "handlebars": "^3.0.3",
     "jquery": "^2.1.4",
     "laravel-elixir": "^3.0.0",
     "lodash": "^2.4.1"

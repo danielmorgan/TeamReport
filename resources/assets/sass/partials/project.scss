@@ -1,0 +1,34 @@
+.project {
+    margin: 40px 0 0;
+
+    .info {
+        position: relative;
+        display: block;
+        margin: 0;
+        padding: 20px;
+        background: $lighter;
+        border-radius: $radius;
+        border: 1px solid $light - 40%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        h1 {
+            margin: 0 0 10px;
+        }
+        p {
+            font-size: 1em;
+        }
+        table.tasklists {
+            width: 100%;
+            margin: 20px 0 0;
+            font-size: 0.8em;
+            tr:hover {
+                td {
+                    color: $lighter;
+                    background: $brand-primary;
+                }
+            }
+            td, th { padding: 5px; }
+            &.key { font-weight: bold; }
+            &.unit { color: $dark; }
+        }
+    }
+}

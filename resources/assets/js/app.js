@@ -1,12 +1,26 @@
 'use strict';
 var TeamReport = TeamReport || {};
 
-var $ = require('jquery');
+window.$ = window.jQuery = require('jquery');
 var Backbone = require('backbone');
-TeamReport.Workspace = require('./router.js');
-
-new TeamReport.Workspace();
+require('../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js');
+TeamReport.Workspace = require('./router');
 
 $(function() {
+    new TeamReport.Workspace();
     Backbone.history.start({ pushState: false });
+
+    // Burger menu
+    var burger = $('#menu-switch');
+    var menu = $('#menu');
+    burger.on('click', function (event) {
+        event.preventDefault();
+        burger.toggleClass('active');
+    });
+    burger.popover({
+        html: true,
+        placement: 'bottom',
+        title: menu.data('title'),
+        content: menu.html()
+    });
 });

@@ -1,0 +1,65 @@
+#header {
+    position: relative;
+    margin: 0;
+    background: url(../../img/balloons.jpg) no-repeat;
+    background-position: 25% center;
+    background-size: cover;
+    border-bottom: 1px solid $brand-primary - 25%;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right, $brand-primary + 50%, $brand-primary - 25%);
+        opacity: 0.75;
+    }
+
+    .row {
+        position: relative;
+        padding: 10px 0;
+        @media (min-width: $screen-sm-min) {
+            padding: 30px 0;
+        }
+    }
+
+    .center {
+        text-align: left;
+        @media (min-width: $screen-sm-min) {
+            text-align: center;
+        }
+    }
+
+    h1 {
+        display: inline-block;
+        margin: 0;
+        font-size: 3em;
+        color: $light;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    #menu-switch {
+        $padding: 20px;
+        display: inline-block;
+        float: left;
+        width: 25px + ($padding * 2);
+        height: 19px + ($padding * 2);
+        cursor: pointer;
+        > div {
+            padding: $padding;
+        }
+        @media (min-width: $screen-sm) {
+            float: none;
+            margin: -12px 0;
+        }
+    }
+
+    .burger-icon {
+        @include burger(25px, 3px, 5px, $light);
+    }
+
+    .active .burger-icon {
+        @include burger-to-cross;
+    }
+}

@@ -1,0 +1,27 @@
+::selection {
+    background: $brand-tertiary;
+    color: $light;
+}
+
+body {
+    background: $background-primary;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover {
+    box-shadow: 0 0 0 !important;
+    outline: 0 0 0 !important;
+    -webkit-appearance: none;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}

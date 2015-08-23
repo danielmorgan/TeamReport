@@ -7,10 +7,13 @@ var Backbone = require('backbone');
 TeamReport.ProjectsSubView = require('./ProjectsSubView.js');
 
 TeamReport.ProjectsView = Backbone.View.extend({
-    tagName: 'ul',
-    className: 'projects',
+    selector: '#template-projects',
 
     initialize: function() {
+        this.template = _.template($(this.selector).html());
+        this.className = $(this.selector).attr('class');
+        this.tagName = $(this.selector).attr('data-tag');
+
         this.collection.on('update', this.render, this);
         this.collection.fetch();
         this.render();
@@ -18,6 +21,8 @@ TeamReport.ProjectsView = Backbone.View.extend({
 
     buildSubViews: function() {
         var self = this;
+        this.$el.html(this.template());
+
         _.forEach(this.collection.models, function(model) {
             var projectView = new TeamReport.ProjectsSubView({ model: model });
             self.$el.append(projectView.$el);
@@ -25,8 +30,9 @@ TeamReport.ProjectsView = Backbone.View.extend({
     },
 
     render: function() {
+        this.$el.addClass(this.className);
         this.buildSubViews();
-        $('#container').html(this.$el);
+        $('#team-report').html(this.$el);
 
         return this;
     }

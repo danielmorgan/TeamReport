@@ -8,12 +8,12 @@ var Backbone = require('backbone');
 TeamReport.ProjectView = Backbone.View.extend({
     tagName: 'div',
     className: 'project',
-    template: _.template('<h2><%= name %></h2><p><strong>Project ID:</strong> <%= id %></p><p><strong>Company:</strong> <%= company %></p>'),
 
     initialize: function() {
+        this.template = _.template($('#template-project').html());
         var self = this;
-        this.model.on('change', this.render, this);
 
+        this.model.on('change', this.render, this);
         this.model.fetch({
             success: function(model) {
                 self.$el.html(self.template(model.attributes));
@@ -26,7 +26,7 @@ TeamReport.ProjectView = Backbone.View.extend({
     },
 
     render: function() {
-        $('#container').html(this.$el);
+        $('#team-report').html(this.$el);
 
         return this;
     }

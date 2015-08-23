@@ -1,16 +1,23 @@
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+/**
+ * Modules
+ * Stuff that doesn't output CSS directly e.g. functions, variables and mixins.
+ */
+@import "modules/variables";
 
-.project {
+/**
+ * Vendor
+ * Third-party CSS. Extend with your own files, don't modify.
+ */
+@import "vendor/bootstrap-custom";
+@import "vendor/_burger";
 
-    .times {
-        .tasklist {
-            font-weight: bold;
-        }
-        .budget {
-            color: rgba(120,120,120,1);
-        }
-        .used {
-            color: rgba(231,76,60,1);
-        }
-    }
-}
+/**
+ * Partials
+ * Individual components e.g. header, footer, post, typography, buttons, forms.
+ */
+@import "partials/body";
+@import "partials/typography";
+@import "partials/header";
+@import "partials/projects";
+@import "partials/project-summary";
+@import "partials/project";
