@@ -17,9 +17,29 @@ TeamReport.ProjectSummaryView = Backbone.View.extend({
         this.render();
     },
 
-    render: function() {
-        this.$el.addClass(this.className);
+    buildProjectEl: function() {
+        this.model.set({
+            used: this.sumAttributes('used'),
+            budget: this.sumAttributes('budget')
+        });
+
         this.$el.html(this.template(this.model.attributes));
+    },
+
+    sumAttributes: function(attr) {
+        var total = 0;
+        _.forEach(this.model.get('tasklists'), function(tasklist) {
+            total += tasklist[attr];
+        });
+        return total;
+    },
+
+    render: function() {
+        this.buildProjectEl();
+        this.$el.addClass(this.className);
+        if (this.model.get('used') > this.model.get('budget')) {
+            this.$el.addClass('over-budget');
+        };
 
         return this;
     }

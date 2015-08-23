@@ -3,10 +3,10 @@ var TeamReport = TeamReport || {};
 
 var $ = require('jquery');
 var Backbone = require('backbone');
-TeamReport.Projects = require('./Model/Projects.js');
-TeamReport.Project = require('./Model/Project.js');
-TeamReport.ProjectsView = require('./View/ProjectsView.js');
-TeamReport.ProjectView = require('./View/ProjectView.js');
+TeamReport.Projects = require('./Model/Projects');
+TeamReport.Project = require('./Model/Project');
+TeamReport.ProjectsView = require('./View/ProjectsView');
+TeamReport.ProjectView = require('./View/ProjectView');
 
 TeamReport.Workspace = Backbone.Router.extend({
     routes: {

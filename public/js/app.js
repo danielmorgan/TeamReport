@@ -19473,7 +19473,7 @@ var TeamReport = TeamReport || {};
 
 var _ = require('lodash');
 var Backbone = require('backbone');
-TeamReport.Project = require('./Project.js');
+TeamReport.Project = require('./Project');
 
 TeamReport.Projects = Backbone.Collection.extend({
     model: TeamReport.Project,
@@ -19482,7 +19482,7 @@ TeamReport.Projects = Backbone.Collection.extend({
 
 module.exports = TeamReport.Projects;
 
-},{"./Project.js":6,"backbone":1,"lodash":5}],8:[function(require,module,exports){
+},{"./Project":6,"backbone":1,"lodash":5}],8:[function(require,module,exports){
 'use strict';
 var TeamReport = TeamReport || {};
 
@@ -19501,7 +19501,7 @@ TeamReport.ProjectView = Backbone.View.extend({
         this.model.on('change', this.render, this);
         this.model.fetch({
             success: function success(model) {
-                self.buildEl();
+                self.buildProjectEl();
             },
             error: function error(model, response) {
                 self.$el.html('<h3>Error ' + response.status + '</h3><p>' + response.responseJSON.message + '</p>');
@@ -19510,7 +19510,7 @@ TeamReport.ProjectView = Backbone.View.extend({
         });
     },
 
-    buildEl: function buildEl() {
+    buildProjectEl: function buildProjectEl() {
         this.model.set({
             used: this.sumAttributes('used'),
             budget: this.sumAttributes('budget')
@@ -19556,9 +19556,29 @@ TeamReport.ProjectSummaryView = Backbone.View.extend({
         this.render();
     },
 
-    render: function render() {
-        this.$el.addClass(this.className);
+    buildProjectEl: function buildProjectEl() {
+        this.model.set({
+            used: this.sumAttributes('used'),
+            budget: this.sumAttributes('budget')
+        });
+
         this.$el.html(this.template(this.model.attributes));
+    },
+
+    sumAttributes: function sumAttributes(attr) {
+        var total = 0;
+        _.forEach(this.model.get('tasklists'), function (tasklist) {
+            total += tasklist[attr];
+        });
+        return total;
+    },
+
+    render: function render() {
+        this.buildProjectEl();
+        this.$el.addClass(this.className);
+        if (this.model.get('used') > this.model.get('budget')) {
+            this.$el.addClass('over-budget');
+        };
 
         return this;
     }
@@ -19573,7 +19593,7 @@ var TeamReport = TeamReport || {};
 var _ = require('lodash');
 var $ = require('jquery');
 var Backbone = require('backbone');
-TeamReport.ProjectsSubView = require('./ProjectsSubView.js');
+TeamReport.ProjectsSummaryView = require('./ProjectsSummaryView');
 
 TeamReport.ProjectsView = Backbone.View.extend({
     selector: '#template-projects',
@@ -19593,7 +19613,7 @@ TeamReport.ProjectsView = Backbone.View.extend({
         this.$el.html(this.template());
 
         _.forEach(this.collection.models, function (model) {
-            var projectView = new TeamReport.ProjectsSubView({ model: model });
+            var projectView = new TeamReport.ProjectsSummaryView({ model: model });
             self.$el.append(projectView.$el);
         });
     },
@@ -19609,7 +19629,7 @@ TeamReport.ProjectsView = Backbone.View.extend({
 
 module.exports = TeamReport.ProjectsView;
 
-},{"./ProjectsSubView.js":9,"backbone":1,"jquery":4,"lodash":5}],11:[function(require,module,exports){
+},{"./ProjectsSummaryView":9,"backbone":1,"jquery":4,"lodash":5}],11:[function(require,module,exports){
 'use strict';
 var TeamReport = TeamReport || {};
 
@@ -19643,10 +19663,10 @@ var TeamReport = TeamReport || {};
 
 var $ = require('jquery');
 var Backbone = require('backbone');
-TeamReport.Projects = require('./Model/Projects.js');
-TeamReport.Project = require('./Model/Project.js');
-TeamReport.ProjectsView = require('./View/ProjectsView.js');
-TeamReport.ProjectView = require('./View/ProjectView.js');
+TeamReport.Projects = require('./Model/Projects');
+TeamReport.Project = require('./Model/Project');
+TeamReport.ProjectsView = require('./View/ProjectsView');
+TeamReport.ProjectView = require('./View/ProjectView');
 
 TeamReport.Workspace = Backbone.Router.extend({
     routes: {
@@ -19689,4 +19709,4 @@ TeamReport.Workspace = Backbone.Router.extend({
 
 module.exports = TeamReport.Workspace;
 
-},{"./Model/Project.js":6,"./Model/Projects.js":7,"./View/ProjectView.js":8,"./View/ProjectsView.js":10,"backbone":1,"jquery":4}]},{},[11]);
+},{"./Model/Project":6,"./Model/Projects":7,"./View/ProjectView":8,"./View/ProjectsView":10,"backbone":1,"jquery":4}]},{},[11]);

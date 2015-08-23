@@ -2,30 +2,51 @@
     > a {
         position: relative;
         display: block;
-        margin: 0 0 20px;
-        padding: 20px;
+        margin: 0 0 30px;
         background: $lighter;
         border-radius: $radius;
         border: 1px solid $light - 40%;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        color: $brand-primary;
+        .info {
+            padding: 20px;
+        }
+        .totals {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 0.9em;
+            background: $light;
+            &.over-budget { background: $brand-primary; color: $lighter; }
+            .divider { color: $light - 50%; }
+        }
+
+
         &:hover {
-            background: $lighter - 10%;
+            .info {
+                background: $lighter - 10%;
+            }
         }
         &:active {
             top: 1px;
-            box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
-            border: 1px solid $brand-primary - 25%;
-            background: $brand-primary;
-            color: $lighter;
-            h3 { color: $lighter; }
-        }
-        h3 {
-            margin: 0 0 10px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+            .info {
+                background: $brand-primary;
+                color: $lighter;
+                h3 { color: $lighter; }
+            }
         }
         p {
             font-size: 0.8em;
             margin: 0 0 5px;
         }
+    }
+
+    h3 {
+        margin: 0 0 10px;
+        float: left;
+    }
+    .id {
+        float: right;
+        font-size: 0.8em;
+        a { color: $light - 75%; }
     }
 }

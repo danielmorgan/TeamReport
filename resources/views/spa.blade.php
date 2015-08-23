@@ -44,18 +44,29 @@
 
         <script type="text/html" data-tag="li" class="project-summary col-xs-12 col-sm-6 col-md-4 col-lg-3" id="template-project-summary">
             <a href="/#projects/<%= name %>">
-                <h3><%= name %></h3>
-                <p><%= company %></p>
+                <div class="info">
+                    <h3><%= name %></h3>
+                    <span class="id">#<%= id %></span>
+                    <div class="clearfix"></div>
+                    <p><%= company %></p>
+                </div>
                 <div class="chart"></div>
+                <div class="totals">
+                    <span class="used"><%= Math.round(used * 100) / 100 %></span>
+                    <span class="divider"> / </span>
+                    <span class="budget"><%= Math.round(budget * 100) / 100 %></span>
+                    <span class="unit">hrs</span></td>
+                </div>
             </a>
         </script>
 
         <script type="text/html" class="project" id="template-project">
             <div class="col-sm-6 col-md-8 chart"></div>
             <aside class="col-sm-6 col-md-4 info">
-                <h1><%= name %></h1>
+                <h1><a href="/#projects/<%= name %>"><%= name %></a></h1>
+                <span class="id"><a href="/#projects/<%= id %>">#<%= id %></a></span>
+                <div class="clearfix"></div>
                 <p><%= company %></p>
-                <p><strong>Project ID:</strong> <%= id %></p>
                 <table class="tasklists">
                     <thead>
                         <tr>
@@ -68,16 +79,16 @@
                         <% _.forEach(tasklists, function(tasklist) { %>
                             <tr>
                                 <td class="key"><%= tasklist.name %></td>
-                                <td><%= tasklist.used %> <span class="unit">hrs</span></td>
-                                <td><%= tasklist.budget %> <span class="unit">hrs</span></td>
+                                <td><%= Math.round(tasklist.used * 100) / 100 %> <span class="unit">hrs</span></td>
+                                <td><%= Math.round(tasklist.budget * 100) / 100 %> <span class="unit">hrs</span></td>
                             </tr>
                         <% }); %>
                     </tbody>
                     <tfoot>
                         <tr class="totals">
                             <td class="key">Totals</td>
-                            <td><%= used %> <span class="unit">hrs</span></td>
-                            <td><%= budget %> <span class="unit">hrs</span></td>
+                            <td><%= Math.round(used * 100) / 100 %> <span class="unit">hrs</span></td>
+                            <td><%= Math.round(budget * 100) / 100 %> <span class="unit">hrs</span></td>
                         </tr>
                     </tfoot>
                 </table>

@@ -3665,34 +3665,52 @@ a {
     transform: translateY(-8px) rotate(-45deg); }
 
 .projects {
-  margin: 40px 0 0 0;
+  margin: 30px 0 0 0;
   padding: 0; }
 
 .project-summary > a {
   position: relative;
   display: block;
-  margin: 0 0 20px;
-  padding: 20px;
+  margin: 0 0 30px;
   background: #FFFFFF;
   border-radius: 3px;
   border: 1px solid #ceced2;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  color: #EE6352; }
-  .project-summary > a:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+  .project-summary > a .info {
+    padding: 20px; }
+  .project-summary > a .totals {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 0.9em;
+    background: #F6F6FA; }
+    .project-summary > a .totals.over-budget {
+      background: #EE6352;
+      color: #FFFFFF; }
+    .project-summary > a .totals .divider {
+      color: #c4c4c8; }
+  .project-summary > a:hover .info {
     background: whitesmoke; }
   .project-summary > a:active {
     top: 1px;
-    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
-    border: 1px solid #d54a39;
-    background: #EE6352;
-    color: #FFFFFF; }
-    .project-summary > a:active h3 {
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25); }
+    .project-summary > a:active .info {
+      background: #EE6352;
       color: #FFFFFF; }
-  .project-summary > a h3 {
-    margin: 0 0 10px; }
+      .project-summary > a:active .info h3 {
+        color: #FFFFFF; }
   .project-summary > a p {
     font-size: 0.8em;
     margin: 0 0 5px; }
+
+.project-summary h3 {
+  margin: 0 0 10px;
+  float: left; }
+
+.project-summary .id {
+  float: right;
+  font-size: 0.8em; }
+  .project-summary .id a {
+    color: #ababaf; }
 
 .project {
   margin: 40px 0 0; }
@@ -3706,7 +3724,13 @@ a {
     border: 1px solid #ceced2;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
     .project .info h1 {
-      margin: 0 0 10px; }
+      margin: 0 0 10px;
+      float: left; }
+    .project .info .id {
+      float: right;
+      font-size: 0.8em; }
+      .project .info .id a {
+        color: #ababaf; }
     .project .info p {
       font-size: 1em; }
     .project .info table.tasklists {

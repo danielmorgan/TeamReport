@@ -12,6 +12,12 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         h1 {
             margin: 0 0 10px;
+            float: left;
+        }
+        .id {
+            float: right;
+            font-size: 0.8em;
+            a { color: $light - 75%; }
         }
         p {
             font-size: 1em;

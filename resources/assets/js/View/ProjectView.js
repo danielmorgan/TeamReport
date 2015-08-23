@@ -16,7 +16,7 @@ TeamReport.ProjectView = Backbone.View.extend({
         this.model.on('change', this.render, this);
         this.model.fetch({
             success: function(model) {
-                self.buildEl();
+                self.buildProjectEl();
             },
             error: function(model, response) {
                 self.$el.html('<h3>Error ' + response.status + '</h3><p>' + response.responseJSON.message + '</p>');
@@ -25,7 +25,7 @@ TeamReport.ProjectView = Backbone.View.extend({
         });
     },
 
-    buildEl: function() {
+    buildProjectEl: function() {
         this.model.set({
             used: this.sumAttributes('used'),
             budget: this.sumAttributes('budget')

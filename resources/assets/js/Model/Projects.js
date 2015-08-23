@@ -3,7 +3,7 @@ var TeamReport = TeamReport || {};
 
 var _ = require('lodash');
 var Backbone = require('backbone');
-TeamReport.Project = require('./Project.js');
+TeamReport.Project = require('./Project');
 
 TeamReport.Projects = Backbone.Collection.extend({
     model: TeamReport.Project,

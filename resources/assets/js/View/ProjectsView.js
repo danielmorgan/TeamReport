@@ -4,7 +4,7 @@ var TeamReport = TeamReport || {};
 var _ = require('lodash');
 var $ = require('jquery');
 var Backbone = require('backbone');
-TeamReport.ProjectsSubView = require('./ProjectsSubView.js');
+TeamReport.ProjectsSummaryView = require('./ProjectsSummaryView');
 
 TeamReport.ProjectsView = Backbone.View.extend({
     selector: '#template-projects',
@@ -24,7 +24,7 @@ TeamReport.ProjectsView = Backbone.View.extend({
         this.$el.html(this.template());
 
         _.forEach(this.collection.models, function(model) {
-            var projectView = new TeamReport.ProjectsSubView({ model: model });
+            var projectView = new TeamReport.ProjectsSummaryView({ model: model });
             self.$el.append(projectView.$el);
         });
     },
