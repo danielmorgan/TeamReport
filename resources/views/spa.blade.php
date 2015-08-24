@@ -27,7 +27,7 @@
 
         <div id="menu" class="hidden" data-title="Controls">
             <ul class="list-unstyled">
-                <li><a href="#">Generate Report</a></li>
+                <li><a href="/generate">Generate Report</a></li>
             </ul>
         </div>
 

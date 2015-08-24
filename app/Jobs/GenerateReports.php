@@ -1,45 +1,30 @@
 <?php
 
-namespace TeamReport\Console\Commands;
+namespace TeamReport\Jobs;
 
-use Illuminate\Console\Command;
 use Teamwork;
 use Storage;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class GenerateReports extends Command
+class GenerateReports extends Job implements SelfHandling, ShouldQueue
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'reports:generate
-        {amount? : The amount of projects you want to retrieve (for testing purposes).}
-        {--production}';
+    use InteractsWithQueue, SerializesModels;
 
     /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Generate reports based on tasklist titles fetched from TeamworkPM.';
-
-    /**
-     * Create a new command instance.
+     * Create a new job instance.
      */
     public function __construct()
     {
-        parent::__construct();
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return mixed
+     * Execute the job.
      */
     public function handle()
     {
-        $this->comment('Downloading projects from Teamwork:');
         $this->generateReport();
     }
 
@@ -51,43 +36,32 @@ class GenerateReports extends Command
         $tasklistsArray = [];
 
         $projects = Teamwork::project()->all()['projects'];
-        $this->output->progressStart(count($projects));
-
-        $i = 0;
-
         foreach ($projects as $project) {
-            if (! $this->argument('amount') || $i < $this->argument('amount')) {
-                $projectId = (int) $project['id'];
-                $tasklistsArray[$projectId] = [];
-                $tasklistsArray[$projectId]['id'] = $projectId;
-                $tasklistsArray[$projectId]['name'] = $project['name'];
-                $tasklistsArray[$projectId]['company'] = $project['company']['name'];
+            $projectId = (int) $project['id'];
+            $tasklistsArray[$projectId] = [];
+            $tasklistsArray[$projectId]['id'] = $projectId;
+            $tasklistsArray[$projectId]['name'] = $project['name'];
+            $tasklistsArray[$projectId]['company'] = $project['company']['name'];
 
-                $tasklists = Teamwork::project($projectId)->tasklists()['tasklists'];
-                foreach ($tasklists as $tasklist) {
-                    $tasklistId = (int) $tasklist['id'];
-                    $tasklistName = $this->getTasklistName($tasklist['name']);
+            $tasklists = Teamwork::project($projectId)->tasklists()['tasklists'];
+            foreach ($tasklists as $tasklist) {
+                $tasklistId = (int) $tasklist['id'];
+                $tasklistName = $this->getTasklistName($tasklist['name']);
 
-                    $tasklistsArray[$projectId]['tasklists'][] = [
-                        'id' => $tasklistId,
-                        'name' => $tasklistName,
-                        'budget' => $this->getTasklistbudget($tasklist['name']),
-                        'used' => (float) Teamwork::tasklist((int) $tasklist['id'])->timeTotal()['projects'][0]['tasklist']['time-totals']['total-hours-sum']
-                    ];
-                }
-
-                $this->output->progressAdvance();
+                $tasklistsArray[$projectId]['tasklists'][] = [
+                    'id' => $tasklistId,
+                    'name' => $tasklistName,
+                    'budget' => $this->getTasklistbudget($tasklist['name']),
+                    'used' => (float) Teamwork::tasklist((int) $tasklist['id'])->timeTotal()['projects'][0]['tasklist']['time-totals']['total-hours-sum']
+                ];
             }
-            $i++;
         }
 
         $this->saveReport(array_values($tasklistsArray));
-
-        $this->output->progressFinish();
     }
 
     /**
-     * Separate the name from the tasklist.
+     * Seperate the name from the tasklist.
      *
      * @return string $name
      */
@@ -104,7 +78,7 @@ class GenerateReports extends Command
     }
 
     /**
-     * Separate the budget from the tasklist.
+     * Seperate the budget from the tasklist.
      *
      * @return int|false
      */
@@ -143,7 +117,7 @@ class GenerateReports extends Command
         if (Storage::exists('report.json')) {
             Storage::delete('report.json');
         }
-        if (! env('APP_DEBUG') || $this->option('production')) {
+        if (! env('APP_DEBUG')) {
             Storage::append('report.json', json_encode($report, JSON_UNESCAPED_SLASHES));
             Storage::append('report-' . $time . '.json', json_encode($report, JSON_UNESCAPED_SLASHES));
         } else {

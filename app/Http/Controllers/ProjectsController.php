@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use TeamReport\Http\Requests;
 use TeamReport\Http\Controllers\Controller;
 use Storage;
+use TeamReport\Jobs\GenerateReports;
 
 class ProjectsController extends Controller
 {
@@ -43,5 +44,18 @@ class ProjectsController extends Controller
         }
 
         return response()->json(['message' => 'Project not found'], 404);
+    }
+
+	/**
+     * Generate the project report.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function generate()
+    {
+        $job = (new GenerateReports('test'));
+        $this->dispatch($job);
+
+        return redirect()->route('home');
     }
 }

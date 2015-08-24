@@ -5,3 +5,5 @@ Homestead.json
 .env
 *.sublime-*
 public/build/*
+.idea/
+database.sqlite
