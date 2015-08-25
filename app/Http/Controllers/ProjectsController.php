@@ -53,7 +53,7 @@ class ProjectsController extends Controller
      */
     public function generate()
     {
-        $job = (new GenerateReports('test'));
+        $job = (new GenerateReports());
         $this->dispatch($job);
 
         return redirect()->route('home');
