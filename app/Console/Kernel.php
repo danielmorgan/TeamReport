@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \TeamReport\Console\Commands\Inspire::class,
-        \TeamReport\Console\Commands\GenerateReports::class,
+        \TeamReport\Console\Commands\Reports::class,
     ];
 
     /**

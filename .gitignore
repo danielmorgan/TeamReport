@@ -7,3 +7,5 @@ Homestead.json
 public/build/*
 .idea/
 database.sqlite
+/public/css
+/public/js
