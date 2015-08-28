@@ -7,11 +7,9 @@ elixir(function(mix) {
 
     mix.sass('app.scss')
         .browserify('app.js')
-        .browserify('demo.js')
         .version([
             'css/app.css',
             'js/app.js',
-            'js/demo.js',
         ])
         .BrowserSync({
             proxy: process.env.APP_URL,

@@ -13,7 +13,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \TeamReport\Console\Commands\Inspire::class,
         \TeamReport\Console\Commands\GenerateReports::class,
     ];
 

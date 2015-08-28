@@ -1,9 +1,5 @@
 <?php
 
-Route::get('demo', function () {
-    return view('projects');
-});
-
 Route::group(['prefix' => 'api/v1'], function() {
     Route::get('projects', 'ProjectsController@index');
     Route::get('projects/{project}', 'ProjectsController@show');
@@ -11,7 +7,7 @@ Route::group(['prefix' => 'api/v1'], function() {
     Route::get('projects/{project}/tasklists/{tasklist}', 'TasklistsController@show');
 });
 
-Route::get('generate', 'ProjectsController@generate');
+Route::get('generate', 'ReportsController@generate');
 
 Route::get('/', ['as' => 'home', function() {
     return view('spa');

@@ -45,17 +45,4 @@ class ProjectsController extends Controller
 
         return response()->json(['message' => 'Project not found'], 404);
     }
-
-	/**
-     * Generate the project report.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function generate()
-    {
-        $job = (new GenerateReports());
-        $this->dispatch($job);
-
-        return redirect()->route('home');
-    }
 }
