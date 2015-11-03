@@ -65,7 +65,7 @@ TeamReport.ProjectView = Backbone.View.extend({
         var tasklists = { name: [], budget: [], used: [] };
         var i = 0;
         _.forEach(this.model.get('tasklists'), function(tasklist) {
-            if (tasklist.used > 0 && tasklist.budget > 0) {
+            if (tasklist.used > 0 || tasklist.budget > 0) {
                 tasklists.name.push(tasklist.name);
                 tasklists.used.push(tasklist.used);
                 tasklists.budget.push(tasklist.budget);
@@ -73,34 +73,32 @@ TeamReport.ProjectView = Backbone.View.extend({
             }
         });
 
-        if (i > 2) {
-            new Chart(chartCanvas.getContext('2d'))
-                .Radar({
-                    labels: tasklists.name,
-                    datasets: [
-                        {
-                            label: 'Budgeted time',
-                            fillColor: 'rgba(170,170,170,0.2)',
-                            strokeColor: 'rgba(170,170,170,1)',
-                            pointColor: 'rgba(170,170,170,1)',
-                            pointStrokeColor: '#fff',
-                            pointHighlightFill: '#fff',
-                            pointHighlightStroke: 'rgba(170,170,170,1)',
-                            data: tasklists.budget
-                        },
-                        {
-                            label: 'Used time',
-                            fillColor: 'rgba(231,76,60,0.3)',
-                            strokeColor: 'rgba(231,76,60,1)',
-                            pointColor: 'rgba(231,76,60,1)',
-                            pointStrokeColor: '#fff',
-                            pointHighlightFill: '#fff',
-                            pointHighlightStroke: 'rgba(231,76,60,1)',
-                            data: tasklists.used
-                        }
-                    ]
-                }, options);
-        }
+        new Chart(chartCanvas.getContext('2d'))
+            .Radar({
+                labels: tasklists.name,
+                datasets: [
+                    {
+                        label: 'Budgeted time',
+                        fillColor: 'rgba(170,170,170,0.2)',
+                        strokeColor: 'rgba(170,170,170,1)',
+                        pointColor: 'rgba(170,170,170,1)',
+                        pointStrokeColor: '#fff',
+                        pointHighlightFill: '#fff',
+                        pointHighlightStroke: 'rgba(170,170,170,1)',
+                        data: tasklists.budget
+                    },
+                    {
+                        label: 'Used time',
+                        fillColor: 'rgba(231,76,60,0.3)',
+                        strokeColor: 'rgba(231,76,60,1)',
+                        pointColor: 'rgba(231,76,60,1)',
+                        pointStrokeColor: '#fff',
+                        pointHighlightFill: '#fff',
+                        pointHighlightStroke: 'rgba(231,76,60,1)',
+                        data: tasklists.used
+                    }
+                ]
+            }, options);
     },
 
     sumAttributes: function(attr) {
