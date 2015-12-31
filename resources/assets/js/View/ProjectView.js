@@ -5,28 +5,7 @@ var _ = require('lodash');
 var $ = require('jquery');
 var Backbone = require('backbone');
 var Chart = require('chart.js');
-var options = {
-    animation: true,
-    responsive: true,
-    scaleLabel: '<%=value%> hrs',
-    scaleShowLine: true,
-    scaleShowLineOut: false,
-    scaleShowLabels: true,
-    angleLineColor: 'rgba(0,0,0,0.05)',
-    pointLabelFontSize: 14,
-    pointLabelFontFamily: 'Open Sans',
-    pointDotRadius: 5,
-    datasetStroke: true,
-    scaleBeginAtZero: false,
-    customTooltips: function(tooltip) {
-        if (!tooltip) {
-            $('.tasklists tr').removeClass('highlighted');
-            return;
-        }
-        $('.tasklists tr').removeClass('highlighted');
-        $('.tasklists .key:contains(' + tooltip.title + ')').parent('tr').addClass('highlighted');
-    }
-};
+var options = require('../options').chart;
 
 TeamReport.ProjectView = Backbone.View.extend({
     tagName: 'div',
@@ -40,6 +19,7 @@ TeamReport.ProjectView = Backbone.View.extend({
         this.model.fetch({
             success: function(model) {
                 self.buildProjectEl();
+                model.trigger('change');
             },
             error: function(model, response) {
                 self.$el.html('<h3>Error ' + response.status + '</h3><p>' + response.responseJSON.message + '</p>');
@@ -56,14 +36,13 @@ TeamReport.ProjectView = Backbone.View.extend({
 
         this.$el.html(this.template(this.model.attributes));
 
-        this.buildChart();
+        this.initChart(this.getTasklistData());
     },
 
-    buildChart: function() {
-        var chartCanvas = document.getElementById('chart');
-
+    getTasklistData: function() {
         var tasklists = { name: [], budget: [], used: [] };
         var i = 0;
+
         _.forEach(this.model.get('tasklists'), function(tasklist) {
             if (tasklist.used > 0 || tasklist.budget > 0) {
                 tasklists.name.push(tasklist.name);
@@ -73,13 +52,19 @@ TeamReport.ProjectView = Backbone.View.extend({
             }
         });
 
+        return tasklists;
+    },
+
+    initChart: function(tasklists) {
+        var chartCanvas = document.getElementById('chart');
+
         new Chart(chartCanvas.getContext('2d'))
             .Radar({
                 labels: tasklists.name,
                 datasets: [
                     {
                         label: 'Budgeted time',
-                        fillColor: 'rgba(170,170,170,0.2)',
+                        fillColor: 'rgba(170,170,170,0.25)',
                         strokeColor: 'rgba(170,170,170,1)',
                         pointColor: 'rgba(170,170,170,1)',
                         pointStrokeColor: '#fff',
@@ -89,7 +74,7 @@ TeamReport.ProjectView = Backbone.View.extend({
                     },
                     {
                         label: 'Used time',
-                        fillColor: 'rgba(231,76,60,0.3)',
+                        fillColor: 'rgba(231,76,60,0.25)',
                         strokeColor: 'rgba(231,76,60,1)',
                         pointColor: 'rgba(231,76,60,1)',
                         pointStrokeColor: '#fff',
